@@ -2,7 +2,7 @@ import csv
 import io
 import sys
 
-DATA_PATH = "/iesl/canvas/nnayak/codeauth_data/gcj-dataset"
+DATA_PATH = "/iesl/canvas/nnayak/data/codeauth_data/gcj-dataset"
 csv.field_size_limit(sys.maxsize)
 
 def file_getter(year):
