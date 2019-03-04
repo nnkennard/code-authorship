@@ -1,7 +1,7 @@
 from io import BytesIO
 import io
 import tokenize
-import codeauth_lib
+import codeauthorship.codeauth_lib as codeauth_lib
 
 def main():
 

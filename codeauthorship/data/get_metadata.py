@@ -1,4 +1,4 @@
-import codeauth_lib
+import codeauthorship.codeauth_lib as codeauth_lib
 
 def main():
 
