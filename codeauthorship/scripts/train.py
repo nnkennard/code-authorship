@@ -161,6 +161,7 @@ class BatchIterator(object):
         dataset = self.dataset
         batch_size = self.config['batch_size']
         dataset_size = len(dataset['tokens'])
+        n_classes = len(set(dataset['extra']['labels']))
         n_batches = dataset_size // batch_size
 
         logger.info('# of example = {}'.format(dataset_size))
@@ -174,6 +175,7 @@ class BatchIterator(object):
 
         def my_iterator():
             for batch_map in loader:
+                batch_map['neg_samples'] = random.sample(range(n_classes), 20)
                 yield batch_map
 
         return my_iterator()
@@ -187,11 +189,8 @@ class Net(nn.Module):
         self.token_embed_size = 128 # Output of char_encoder.
         self.classifier_hidden_dim = 32 # TODO: Should be an option to modify.
 
-        self.classify = nn.Sequential(
-            nn.Linear(self.token_embed_size, self.classifier_hidden_dim),
-            nn.ReLU(),
-            nn.Linear(self.classifier_hidden_dim, n_classes),
-            )
+        self.class_vectors = nn.Parameter(torch.FloatTensor(self.classifier_hidden_dim, n_classes))
+        self.transform_output = nn.Linear(self.token_embed_size, self.classifier_hidden_dim)
 
         weight_file = 'https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_weights.hdf5'
         options_file = 'https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_options.json'
@@ -219,24 +218,26 @@ class Net(nn.Module):
         for param in self.parameters():
             param.data.normal_()
 
-    def forward(self, char):
+    def forward(self, char, batch_map):
         model_input = self.char_encoder(char)
         mask = model_input['mask']
         token_embedding = model_input['token_embedding']
         h_seq = self.transformer(token_embedding, mask) # TODO: What is the mask for?
         h = torch.max(h_seq, dim=1)[0]
-        yhat = self.classify(h)
+        yhat = self.transform_output(h)
         return yhat
 
 
 def run(options):
+    batch_size = 128
+
     random.seed(options.seed)
 
     logger.info(json.dumps(options.__dict__, sort_keys=True))
 
     logger.info('Initializing dataset.')
     dataset = Dataset(options.data_path).read()
-    batch_iterator = BatchIterator(dataset, dict(batch_size=128))
+    batch_iterator = BatchIterator(dataset, dict(batch_size=batch_size))
 
     logger.info('Initializing model.')
     net = Net(n_classes=len(dataset['metadata']['label2idx']))
@@ -257,17 +258,29 @@ def run(options):
         if options.cuda:
             logger.info('cuda')
             char = char.cuda()
-        yhat = net(char)
+        yhat = net(char, batch_map) # batch-size x dim
 
         # Compute loss.
         logger.info('[model] loss')
         labels = torch.LongTensor(batch_map['labels'])
+        true_labels = torch.zeros(labels.shape[0]).long()
+        neg_samples = torch.LongTensor(batch_map['neg_samples'])
         if options.cuda:
             labels = labels.cuda()
-        loss = nn.CrossEntropyLoss()(yhat, labels)
+            neg_samples = neg_samples.cuda()
+            true_labels = true_labels.cuda()
+        neg = net.class_vectors.index_select(index=neg_samples, dim=1) # dim x neg-samples
+        pos = net.class_vectors.index_select(index=labels, dim=1) # dim x batch-size
+
+        # TODO: Add bias.
+        neg_score = torch.sum(yhat.unsqueeze(2) * neg.unsqueeze(0), dim=1)
+        pos_score = torch.sum(yhat * pos.t(), dim=1).unsqueeze(1)
+        score = torch.cat([pos_score, neg_score], 1)
+
+        loss = nn.CrossEntropyLoss()(score, true_labels)
 
         # Compute acc.
-        correct = torch.sum(yhat.argmax(dim=1) == labels).item()
+        correct = torch.sum(score.argmax(dim=1) == true_labels).item()
         total = yhat.shape[0]
         #acc = correct / total
 
