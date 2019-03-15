@@ -1,8 +1,16 @@
+"""
+Ideas:
+    - Randomly truncate sequence (optionally use information from multiple instances).
+    - Weight cross-entropy by code similarity. One-shot setting?
+"""
+
 import argparse
 import os
 import json
 import logging
 import random
+
+from collections import Counter
 
 from allennlp.modules.elmo import batch_to_ids
 from allennlp.modules.elmo import _ElmoCharacterEncoder as CharacterEncoder
@@ -11,6 +19,7 @@ from allennlp.modules.seq2seq_encoders.stacked_self_attention import StackedSelf
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import torch.utils.data
 
 from tqdm import tqdm
 
@@ -56,6 +65,14 @@ class Dataset(object):
                 label2idx[x] = len(label2idx)
         labels = [label2idx[x] for x in labels]
 
+        # TODO: Are we supposed to filter based on number of times seen?
+        #c = Counter()
+        #for x in labels:
+        #    c[x] += 1
+        #total = sum(c.values())
+        #for k, v in sorted(c.items(), key=lambda x: x[1]):
+        #    logger.info('{} {} ({:.3f})'.format(k, v, v/total))
+
         # Result.
         extra = dict(labels=labels, example_ids=example_ids)
         metadata = dict(label2idx=label2idx)
@@ -67,6 +84,73 @@ class Dataset(object):
         }
 
 
+class SimpleDataset(torch.utils.data.Dataset):
+
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+    def __getitem__(self, index):
+        item = self.dataset[index]
+        return index, item
+
+    def __len__(self):
+        return len(self.dataset)
+
+
+def make_collate_fn(extra):
+    def collate_fn(batch):
+        index, tokens = zip(*batch)
+
+        batch_map = {}
+        batch_map['index'] = index
+        batch_map['tokens'] = tokens
+
+        #char = char[:, :64] # Truncate input. # TODO: Randomly select slice (or subsequence).
+        tokens = [x[:64] for x in tokens]
+
+        batch_map['char'] = batch_to_ids(tokens)
+
+        for k, v in extra.items():
+            batch_map[k] = [v[idx] for idx in index]
+
+        return batch_map
+    return collate_fn
+
+
+class BatchSampler(torch.utils.data.Sampler):
+
+    def __init__(self, datasource, batch_size, include_partial=False):
+        self.batch_size = batch_size
+        self.datasource = datasource
+        self.include_partial = include_partial
+
+        assert include_partial == False
+
+    def reset(self):
+        dataset_size = len(self.datasource)
+
+        order = list(range(dataset_size))
+        random.shuffle(order)
+
+        self.order = order
+        self.index = 0
+        self.n_batches = dataset_size // self.batch_size
+
+    def get_next_batch(self):
+        start = self.index * self.batch_size
+        batch_index = self.order[start:start+self.batch_size]
+        self.index += 1
+        return batch_index
+
+    def __iter__(self):
+        self.reset()
+        for _ in range(len(self)):
+            yield self.get_next_batch()
+
+    def __len__(self):
+        return self.n_batches
+
+
 class BatchIterator(object):
     def __init__(self, dataset, config):
         super(BatchIterator, self).__init__()
@@ -74,31 +158,25 @@ class BatchIterator(object):
         self.config = config
 
     def get_iterator(self):
+        dataset = self.dataset
         batch_size = self.config['batch_size']
-        dataset_size = len(self.dataset['tokens'])
+        dataset_size = len(dataset['tokens'])
         n_batches = dataset_size // batch_size
 
         logger.info('# of example = {}'.format(dataset_size))
         logger.info('batch size = {}'.format(batch_size))
         logger.info('# of batches = {}'.format(n_batches))
 
-        order = list(range(dataset_size))
-        random.shuffle(order)
+        sampler = BatchSampler(dataset['tokens'], batch_size, include_partial=False)
 
-        def select(x, index):
-            return [x[idx] for idx in index]
+        loader = torch.utils.data.DataLoader(SimpleDataset(dataset['tokens']), batch_sampler=sampler,
+                shuffle=(sampler is None), num_workers=8, collate_fn=make_collate_fn(dataset['extra']))
 
-        for i in range(n_batches):
-            start = i * batch_size
-            index = order[start:start+batch_size]
-            tokens = select(self.dataset['tokens'], index)
-            labels = select(self.dataset['extra']['labels'], index)
+        def my_iterator():
+            for batch_map in loader:
+                yield batch_map
 
-            batch_map = dict()
-            batch_map['tokens'] = tokens
-            batch_map['labels'] = labels
-
-            yield batch_map
+        return my_iterator()
 
 
 class Net(nn.Module):
@@ -140,16 +218,16 @@ class Net(nn.Module):
     def reset_parameters(self):
         for param in self.parameters():
             param.data.normal_()
-        
+
     def forward(self, char):
         model_input = self.char_encoder(char)
         mask = model_input['mask']
         token_embedding = model_input['token_embedding']
         h_seq = self.transformer(token_embedding, mask) # TODO: What is the mask for?
-        h = torch.mean(h_seq, dim=1)
+        h = torch.max(h_seq, dim=1)[0]
         yhat = self.classify(h)
         return yhat
-        
+
 
 def run(options):
     random.seed(options.seed)
@@ -158,7 +236,7 @@ def run(options):
 
     logger.info('Initializing dataset.')
     dataset = Dataset(options.data_path).read()
-    batch_iterator = BatchIterator(dataset, dict(batch_size=4))
+    batch_iterator = BatchIterator(dataset, dict(batch_size=128))
 
     logger.info('Initializing model.')
     net = Net(n_classes=len(dataset['metadata']['label2idx']))
@@ -174,14 +252,11 @@ def run(options):
     for batch_map in batch_iterator.get_iterator():
         # Predict.
         logger.info('[model] predict')
-        tokens = batch_map['tokens']
-        char = batch_to_ids(tokens)
-
-        # Truncate input.
-        # TODO: Randomly select slice (or subsequence).
-        char = char[:, :64]
-
-        logger.info('[model] input-shape={}'.format(char.shape))
+        #tokens = batch_map['tokens']
+        char = batch_map['char']
+        if options.cuda:
+            logger.info('cuda')
+            char = char.cuda()
         yhat = net(char)
 
         # Compute loss.
@@ -190,6 +265,11 @@ def run(options):
         if options.cuda:
             labels = labels.cuda()
         loss = nn.CrossEntropyLoss()(yhat, labels)
+
+        # Compute acc.
+        correct = torch.sum(yhat.argmax(dim=1) == labels).item()
+        total = yhat.shape[0]
+        #acc = correct / total
 
         # Gradient step.
         logger.info('[model] update')
@@ -200,7 +280,7 @@ def run(options):
         opt.step()
 
         # Logging.
-        logger.info('step={} loss={:.5f}'.format(step, loss.item()))
+        logger.info('step={} loss={:.5f} correct/total={}/{}'.format(step, loss.item(), correct, total))
 
         step += 1
 
