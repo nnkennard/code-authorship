@@ -29,6 +29,8 @@ def file_getter(filename):
 def convert_file(path_in, path_out):
     reader = file_getter(path_in)
 
+    example_id = 0
+
     with open(path_out, 'w') as f:
         for i, row in enumerate(reader):
             username = row['username']
@@ -51,7 +53,13 @@ def convert_file(path_in, path_out):
                 for x in tokenizer:
                     tokens.append(x.string)
 
-                f.write('{}\n'.format(json.dumps(dict(username=username, tokens=tokens))))
+                ex = {}
+                ex['username'] = username
+                ex['tokens'] = tokens
+                ex['example_id'] = str(example_id)
+
+                f.write('{}\n'.format(json.dumps(ex)))
+                example_id += 1
             except:
                 print('Failed {}'.format(row['file']))
 
