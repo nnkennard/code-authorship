@@ -160,8 +160,8 @@ def run(options):
     for k in sorted(class_freq_dist.keys()):
         print(k, class_freq_dist[k])
 
-    print('train-size = {}, test-size = {}'.format(
-        len(trainY), len(testY)))
+    print('train-size = {}, test-size = {}, # of labels = {}'.format(
+        len(trainY), len(testY), len(set(trainY))))
 
     # 
 
