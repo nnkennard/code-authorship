@@ -1,6 +1,7 @@
 import argparse
 import os
 import json
+import random
 import sys
 
 from collections import Counter
@@ -90,6 +91,7 @@ def get_dataset(path):
 
 
 def run(options):
+    random.seed(11)
     dataset = get_dataset(options.path_in)
 
     print('dataset-size = {}'.format(dataset['metadata']['dataset_size']))
@@ -100,26 +102,57 @@ def run(options):
     idx2label = {v: k for k, v in label2idx.items()}
     labels = dataset['secondary']['labels']
 
+    contents = [' '.join(x) for x in dataset['primary']]
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(contents)
+
+    # Create data split.
+
+    ## Shuffle.
+    index = list(range(len(labels)))
+    random.shuffle(index)
+    author2idx = {}
+    for idx in index:
+        label = labels[idx]
+        author2idx.setdefault(label, []).append(idx)
+
+    ## Create split.
+    cutoff = 4
+    train_idx = []
+    test_idx = []
+    for k in author2idx.keys():
+        if len(author2idx[k]) <= cutoff:
+            continue
+        test_idx += author2idx[k][:cutoff]
+        train_idx += author2idx[k][cutoff:]
+
+    # Create data.
+    trainX = X[train_idx]
+    trainY = [labels[idx] for idx in train_idx]
+    testX = X[test_idx]
+    testY = [labels[idx] for idx in test_idx]
+
     # Get more detail about class distribution.
 
-    class_dist = Counter(labels)
+    class_dist = Counter(trainY)
 
     print('hi-freq class info:')
     for i, x in enumerate(class_dist.most_common()[:10]):
         label = idx2label[x[0]]
         count = x[1]
-        percent = count / len(labels)
+        percent = count / len(trainY)
 
         print('{:3}. {:10} {:.3f} ({}/{})'.format(
-            i, label, percent, count, len(labels)))
+            i, label, percent, count, len(trainY)))
     print('lo-freq class info:')
     for i, x in enumerate(class_dist.most_common()[-10:]):
         label = idx2label[x[0]]
         count = x[1]
-        percent = count / len(labels)
+        percent = count / len(trainY)
 
         print('{:3}. {:10} {:.3f} ({}/{})'.format(
-            i, label, percent, count, len(labels)))
+            i, label, percent, count, len(trainY)))
 
     class_freq_dist = Counter(class_dist.values())
 
@@ -129,20 +162,21 @@ def run(options):
 
     # 
 
-    contents = [' '.join(x) for x in dataset['primary']]
+    clf = RandomForestClassifier(n_estimators=100, max_depth=None, n_jobs=-1, random_state=0)
+    clf.fit(trainX, trainY)
 
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(contents)
-    clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
-    clf.fit(X, labels)
+    freq2metrics = {}
 
-    freq2metrics = {k: dict(false_pos=0, true_pos=0, false_neg=0) for k in set(class_dist.values())}
+    predictions = clf.predict(trainX)
 
-    predictions = clf.predict(X)
-
-    for yhat, y in zip(predictions, labels):
+    for yhat, y in zip(predictions, testY):
         true_freq = class_dist[y]
         false_freq = class_dist[yhat]
+
+        for freq in [true_freq, false_freq]:
+            if freq not in freq2metrics:
+                freq2metrics[freq] = dict(false_pos=0, true_pos=0, false_neg=0)
+
         if yhat == y:
             freq2metrics[true_freq]['true_pos'] += 1
         else:
@@ -156,16 +190,16 @@ def run(options):
         false_pos = freq2metrics[k]['false_pos']
         false_neg = freq2metrics[k]['false_neg']
 
-        precision = true_pos / (true_pos + false_pos)
-        recall = true_pos / (true_pos + false_neg)
-        f1 = 2 * precision * recall / (precision + recall)
+        precision = true_pos / (true_pos + false_pos) if (true_pos + false_pos) > 0 else 0
+        recall = true_pos / (true_pos + false_neg) if  (true_pos + false_neg) else 0
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0
         print('freq={} precision={:.3f}, recall={:.3f}, f1={:.3f}'.format(
             k, precision, recall, f1))
 
         f1_lst.append(f1)
 
     true_pos = sum([x['true_pos'] for x in freq2metrics.values()])
-    accuracy = true_pos / len(labels)
+    accuracy = true_pos / len(testY)
     average_f1 = np.mean(f1_lst)
 
     print('average-f1={:.3f} accuracy={:.3f}'.format(average_f1, accuracy))
