@@ -122,10 +122,10 @@ def run(options):
     train_idx = []
     test_idx = []
     for k in author2idx.keys():
-        if len(author2idx[k]) <= cutoff:
+        if len(author2idx[k]) <= cutoff * 2:
             continue
         test_idx += author2idx[k][:cutoff]
-        train_idx += author2idx[k][cutoff:]
+        train_idx += author2idx[k][cutoff:cutoff*2]
 
     # Create data.
     trainX = X[train_idx]
@@ -159,6 +159,9 @@ def run(options):
     print('freq-info (# of files, # of authors with # of files):')
     for k in sorted(class_freq_dist.keys()):
         print(k, class_freq_dist[k])
+
+    print('train-size = {}, test-size = {}'.format(
+        len(trainY), len(testY)))
 
     # 
 
