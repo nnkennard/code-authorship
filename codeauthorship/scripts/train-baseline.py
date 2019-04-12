@@ -1,9 +1,10 @@
 import argparse
 import os
 import json
-
-import collections
 import sys
+
+from collections import Counter
+
 import numpy as np
 
 from sklearn.ensemble import RandomForestClassifier
@@ -95,18 +96,79 @@ def run(options):
     print('vocab-size = {}'.format(dataset['metadata']['vocab_size']))
     print('# of classes = {}'.format(dataset['metadata']['n_classes']))
 
-    contents = [' '.join(x) for x in dataset['primary']]
+    label2idx = dataset['metadata']['label2idx']
+    idx2label = {v: k for k, v in label2idx.items()}
     labels = dataset['secondary']['labels']
+
+    # Get more detail about class distribution.
+
+    class_dist = Counter(labels)
+
+    print('hi-freq class info:')
+    for i, x in enumerate(class_dist.most_common()[:10]):
+        label = idx2label[x[0]]
+        count = x[1]
+        percent = count / len(labels)
+
+        print('{:3}. {:10} {:.3f} ({}/{})'.format(
+            i, label, percent, count, len(labels)))
+    print('lo-freq class info:')
+    for i, x in enumerate(class_dist.most_common()[-10:]):
+        label = idx2label[x[0]]
+        count = x[1]
+        percent = count / len(labels)
+
+        print('{:3}. {:10} {:.3f} ({}/{})'.format(
+            i, label, percent, count, len(labels)))
+
+    class_freq_dist = Counter(class_dist.values())
+
+    print('freq-info (# of files, # of authors with # of files):')
+    for k in sorted(class_freq_dist.keys()):
+        print(k, class_freq_dist[k])
+
+    # 
+
+    contents = [' '.join(x) for x in dataset['primary']]
 
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(contents)
     clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
     clf.fit(X, labels)
 
-    predictions = clf.predict(X)
-    accuracy = clf.score(X, labels)
-    print(accuracy)
+    freq2metrics = {k: dict(false_pos=0, true_pos=0, false_neg=0) for k in set(class_dist.values())}
 
+    predictions = clf.predict(X)
+
+    for yhat, y in zip(predictions, labels):
+        true_freq = class_dist[y]
+        false_freq = class_dist[yhat]
+        if yhat == y:
+            freq2metrics[true_freq]['true_pos'] += 1
+        else:
+            freq2metrics[true_freq]['false_neg'] += 1
+            freq2metrics[false_freq]['false_pos'] += 1
+
+    f1_lst = []
+
+    for k in sorted(freq2metrics.keys()):
+        true_pos = freq2metrics[k]['true_pos']
+        false_pos = freq2metrics[k]['false_pos']
+        false_neg = freq2metrics[k]['false_neg']
+
+        precision = true_pos / (true_pos + false_pos)
+        recall = true_pos / (true_pos + false_neg)
+        f1 = 2 * precision * recall / (precision + recall)
+        print('freq={} precision={:.3f}, recall={:.3f}, f1={:.3f}'.format(
+            k, precision, recall, f1))
+
+        f1_lst.append(f1)
+
+    true_pos = sum([x['true_pos'] for x in freq2metrics.values()])
+    accuracy = true_pos / len(labels)
+    average_f1 = np.mean(f1_lst)
+
+    print('average-f1={:.3f} accuracy={:.3f}'.format(average_f1, accuracy))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
