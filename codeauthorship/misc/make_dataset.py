@@ -11,6 +11,8 @@ import json
 import csv
 import io
 import sys
+import tempfile
+import tokenize
 
 csv.field_size_limit(sys.maxsize)
 
@@ -28,10 +30,33 @@ def convert_file(path_in, path_out):
     reader = file_getter(path_in)
 
     with open(path_out, 'w') as f:
-        for row in reader:
+        for i, row in enumerate(reader):
             username = row['username']
-            tokens = row['flines'].split(' ')
-            f.write('{}\n'.format(json.dumps(dict(username=username, tokens=tokens))))
+
+            # Only python for now.
+            if not row['file'].endswith('.py'):
+                print('Skipping {}'.format(row['file']))
+                continue
+
+            # Write code to temporary file.
+            tempf = tempfile.NamedTemporaryFile(mode='w')
+            tempf.write(row['flines'])
+            tempf.flush()
+            tempfname = tempf.name
+
+            # Tokenize code.
+            try:
+                tokenizer = tokenize.tokenize(open(tempfname, 'rb').readline)
+                tokens = []
+                for x in tokenizer:
+                    tokens.append(x.string)
+
+                f.write('{}\n'.format(json.dumps(dict(username=username, tokens=tokens))))
+            except:
+                print('Failed {}'.format(row['file']))
+
+            # Cleanup.
+            tempf.close()
 
 
 if __name__ == '__main__':
