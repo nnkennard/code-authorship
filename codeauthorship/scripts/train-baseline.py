@@ -91,7 +91,7 @@ def get_dataset(path):
 
 
 def run(options):
-    random.seed(11)
+    random.seed(options.seed)
     dataset = get_dataset(options.path_in)
 
     print('dataset-size = {}'.format(dataset['metadata']['dataset_size']))
@@ -179,8 +179,14 @@ def run(options):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv.jsonl', type=str)
+    parser.add_argument('--seed', default=None, type=int)
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
+
+    if options.seed is None:
+        options.seed = random.randint(0, 1e7)
+
+    print(json.dumps(options.__dict__, sort_keys=True))
 
     run(options)
