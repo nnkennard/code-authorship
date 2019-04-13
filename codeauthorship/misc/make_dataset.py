@@ -31,6 +31,10 @@ def convert_file(path_in, path_out):
 
     example_id = 0
 
+    failed = 0
+    skipped = 0
+    success = 0
+
     with open(path_out, 'w') as f:
         for i, row in enumerate(reader):
             username = row['username']
@@ -38,6 +42,7 @@ def convert_file(path_in, path_out):
             # Only python for now.
             if not row['file'].endswith('.py'):
                 print('Skipping {}'.format(row['file']))
+                skipped += 1
                 continue
 
             # Write code to temporary file.
@@ -49,22 +54,34 @@ def convert_file(path_in, path_out):
             # Tokenize code.
             try:
                 tokenizer = tokenize.tokenize(open(tempfname, 'rb').readline)
+
                 tokens = []
                 for x in tokenizer:
-                    tokens.append(x.string)
+                    token = {}
+                    token['type'] = tokenize.tok_name[x.type]
+                    token['val'] = x.string
+                    tokens.append(token)
 
                 ex = {}
                 ex['username'] = username
                 ex['tokens'] = tokens
                 ex['example_id'] = str(example_id)
 
+                # import ipdb; ipdb.set_trace()
+
                 f.write('{}\n'.format(json.dumps(ex)))
                 example_id += 1
+                success += 1
             except:
                 print('Failed {}'.format(row['file']))
+                failed += 1
 
             # Cleanup.
             tempf.close()
+
+    print('skipped', skipped)
+    print('failed', failed)
+    print('success', success)
 
 
 if __name__ == '__main__':

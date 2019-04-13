@@ -24,6 +24,8 @@ def indexify(value2idx, lst):
 
 
 def get_dataset(path):
+    print('reading = {}'.format(path))
+
     dataset = {}
 
     # Primary data.
@@ -37,12 +39,45 @@ def get_dataset(path):
     # Metadata. Information about the dataset.
     metadata = {}
 
+    # Read data.
+    type_counter = Counter()
+
+    tokens_to_ignore = []
+
+    if options.nocomment:
+        tokens_to_ignore.append('COMMENT')
+    if options.nostring:
+        tokens_to_ignore.append('STRING')
+    if options.nonewline:
+        tokens_to_ignore.append('NEWLINE')
+    if options.nonumber:
+        tokens_to_ignore.append('NUMBER')
+    if options.noindent:
+        tokens_to_ignore.append('INDENT')
+    if options.nodedent:
+        tokens_to_ignore.append('DEDENT')
+    if options.noencoding:
+        tokens_to_ignore.append('ENCODING')
+
+    def get_tokens(tokens):
+        return [x for x in tokens if x['type'] not in tokens_to_ignore]
+
     with open(path) as f:
         for i, line in enumerate(f):
             ex = json.loads(line)
-            seq.append(ex['tokens'])
+            tokens = get_tokens(ex['tokens'])
+            token_vals = [x['val'] for x in tokens]
+            token_types = [x['type'] for x in tokens]
+            type_counter.update(token_types)
+
+            seq.append(token_vals)
             labels.append(ex['username'])
             example_ids.append(ex['example_id'])
+
+    lengths = [len(x) for x in seq]
+    print('average-length = {}'.format(np.mean(lengths)))
+    for k, v in type_counter.items():
+        print(k, v)
 
     # Build vocab.
 
@@ -213,6 +248,14 @@ if __name__ == "__main__":
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv.jsonl', type=str)
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
+    # tokens to ignore
+    parser.add_argument('--nocomment', action='store_true')
+    parser.add_argument('--nostring', action='store_true')
+    parser.add_argument('--nonewline', action='store_true')
+    parser.add_argument('--nonumber', action='store_true')
+    parser.add_argument('--noindent', action='store_true')
+    parser.add_argument('--nodedent', action='store_true')
+    parser.add_argument('--noencoding', action='store_true')
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
