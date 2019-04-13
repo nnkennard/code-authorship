@@ -4,6 +4,10 @@ import json
 import random
 import sys
 
+# for obfuscation
+import keyword
+import builtins
+
 from collections import Counter
 
 import numpy as np
@@ -11,6 +15,40 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import StratifiedKFold
+
+
+class ObfuscationAlgorithm(object):
+    def __init__(self, rand_vocab_size=100000):
+        super(ObfuscationAlgorithm, self).__init__()
+
+        reserved_words = []
+        reserved_words += keyword.kwlist
+        reserved_words += dir(builtins)
+
+        self.reserved_words = set(reserved_words)
+        self.rand_vocab = ['rand_vocab_{}'.format(i) for i in range(rand_vocab_size)]
+        self.rand_vocab_size = rand_vocab_size
+
+    def obfuscate(self, tokens):
+        # Get all NAME tokens that are not in the reserved vocab.
+        local_vocab = set([x['val'] for x in tokens if x['type'] == 'NAME' and x['val'] not in self.reserved_words])
+        local_vocab_size = len(local_vocab)
+
+        # Create a mapping from the local vocab to our randomized vocab.
+        index = random.sample(range(self.rand_vocab_size), local_vocab_size)
+        local2rand = {local: self.rand_vocab[index[i]] for i, local in enumerate(local_vocab)}
+
+        # Map the tokens.
+        def map_tokens(tokens, mapping):
+            for x in tokens:
+                if x['type'] == 'NAME' and x['val'] not in self.reserved_words:
+                    new_x = {'val': mapping[x['val']], 'type': x['type']}
+                    yield new_x
+                    continue
+                yield x
+        new_tokens = map_tokens(tokens, mapping=local2rand)
+
+        return new_tokens
 
 
 def indexify(value2idx, lst):
@@ -25,6 +63,11 @@ def indexify(value2idx, lst):
 
 def get_dataset(path):
     print('reading = {}'.format(path))
+
+    # Local variables.
+    obfuscate = ObfuscationAlgorithm()
+
+    #
 
     dataset = {}
 
@@ -71,8 +114,12 @@ def get_dataset(path):
 
     def get_tokens(tokens):
         xs = [x for x in tokens if x['type'] not in tokens_to_ignore]
-        if len(xs) <= 1:
+        # There should always be at least two tokens.
+        while len(xs) <= 1:
             xs.append({'val': 'FILLER', 'type': 'FILLER'})
+        # Optionally, obfuscate the tokens.
+        if options.obfuscate_names:
+            xs = obfuscate.obfuscate(xs)
         return xs
 
     with open(path) as f:
@@ -258,7 +305,7 @@ def run(options):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_in', default='~/Downloads/gcj.jsonl', type=str)
+    parser.add_argument('--path_in', default='~/Downloads/gcj-small.jsonl', type=str)
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
     # tokens to ignore
@@ -274,6 +321,8 @@ if __name__ == "__main__":
     parser.add_argument('--nonl', action='store_true')
     parser.add_argument('--noname', action='store_true')
     parser.add_argument('--noop', action='store_true')
+    # data manipulation
+    parser.add_argument('--obfuscate_names', action='store_true')
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)

@@ -5,50 +5,52 @@ import json
 from collections import OrderedDict, Counter
 
 
-def run(options):
-    metrics = OrderedDict()
-    metrics['count'] = 0
-    metrics['max-length'] = 0
-    metrics['vocab-size'] = 0
+def get_dataset(path):
+    def read_data():
+        with open(path) as f:
+            for line in f:
+                data = json.loads(line)
+                label = data['username']
+                tokens = data['tokens']
 
-    vocab = Counter()
+                # Only look at specific token types.
+                tokens = [x for x in tokens if x['type'] == 'NAME']
 
-    with open(options.path_in) as f:
-        for line in f:
-            data = json.loads(line)
-            tokens = data['tokens']
-            metrics['count'] += 1
-            metrics['max-length'] = max(metrics['max-length'], len(tokens))
-            vocab.update(tokens)
+                ex = {}
+                ex['label'] = label
+                ex['tokens'] = [x['val'] for x in tokens]
 
-    metrics['vocab-size'] = len(vocab)
+                yield ex
+    records = list(read_data())
 
-    print('metrics:')
-    for k, v in metrics.items():
-        print(k, v)
-    print()
+    labels = [x['label'] for x in records]
+    tokens = [x['tokens'] for x in records]
 
-    freq = vocab.most_common()
+    dataset = {}
+    dataset['labels'] = labels
+    dataset['tokens'] = tokens
 
-    print('hi-freq-tokens:')
-    for i, x in enumerate(freq[:10]):
-        print(i, x)
-    print()
+    return dataset
 
 
-    print('lo-freq-tokens:')
-    for i, x in enumerate(freq[-10:]):
-        print(i, x)
-    print()
+def run_freq_tokens(options):
 
+    dataset = get_dataset(options.path_in)
 
+    token_counter = Counter()
+
+    for x, y in zip(dataset['tokens'], dataset['labels']):
+        token_counter.update(x)
+
+    for x in token_counter.most_common(100):
+        print(x)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv.jsonl', type=str)
+    parser.add_argument('--path_in', default='~/Downloads/gcj.jsonl', type=str)
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
 
-    run(options)
+    run_freq_tokens(options)
