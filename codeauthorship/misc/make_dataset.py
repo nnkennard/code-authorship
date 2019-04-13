@@ -17,13 +17,16 @@ import tokenize
 csv.field_size_limit(sys.maxsize)
 
 def file_getter(filename):
-    def func(f):
-        for line in f:
-            yield line.replace('\0', '')
-    with open(filename, 'r') as f:
-        reader = csv.DictReader(list(func(f)))
-    return reader
-# data_reader.py, end
+    for fn in filename.split(','):
+        fn = os.path.expanduser(fn)
+        def func(f):
+            for line in f:
+                yield line.replace('\0', '')
+        print('reading = {}'.format(fn))
+        with open(fn, 'r') as f:
+            reader = csv.DictReader(list(func(f)))
+        for x in reader:
+            yield x
 
 
 def convert_file(path_in, path_out):
@@ -41,7 +44,7 @@ def convert_file(path_in, path_out):
 
             # Only python for now.
             if not row['file'].endswith('.py'):
-                print('Skipping {}'.format(row['file']))
+                # print('Skipping {}'.format(row['file']))
                 skipped += 1
                 continue
 
@@ -73,7 +76,7 @@ def convert_file(path_in, path_out):
                 example_id += 1
                 success += 1
             except:
-                print('Failed {}'.format(row['file']))
+                # print('Failed {}'.format(row['file']))
                 failed += 1
 
             # Cleanup.
@@ -86,8 +89,8 @@ def convert_file(path_in, path_out):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv', type=str)
-    parser.add_argument('--path_out', default='~/Downloads/gcj2008.csv.jsonl', type=str)
+    parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv', type=str)
+    parser.add_argument('--path_out', default='~/Downloads/gcj.jsonl', type=str)
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)

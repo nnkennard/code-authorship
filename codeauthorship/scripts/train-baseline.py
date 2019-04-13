@@ -258,7 +258,7 @@ def run(options):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv.jsonl', type=str)
+    parser.add_argument('--path_in', default='~/Downloads/gcj.jsonl', type=str)
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
     # tokens to ignore
