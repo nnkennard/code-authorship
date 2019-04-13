@@ -133,48 +133,17 @@ def run(options):
     testX = X[test_idx]
     testY = [labels[idx] for idx in test_idx]
 
-    # Get more detail about class distribution.
-
-    class_dist = Counter(trainY)
-
-    print('hi-freq class info:')
-    for i, x in enumerate(class_dist.most_common()[:10]):
-        label = idx2label[x[0]]
-        count = x[1]
-        percent = count / len(trainY)
-
-        print('{:3}. {:10} {:.3f} ({}/{})'.format(
-            i, label, percent, count, len(trainY)))
-    print('lo-freq class info:')
-    for i, x in enumerate(class_dist.most_common()[-10:]):
-        label = idx2label[x[0]]
-        count = x[1]
-        percent = count / len(trainY)
-
-        print('{:3}. {:10} {:.3f} ({}/{})'.format(
-            i, label, percent, count, len(trainY)))
-
-    class_freq_dist = Counter(class_dist.values())
-
-    print('freq-info (# of files, # of authors with # of files):')
-    for k in sorted(class_freq_dist.keys()):
-        print(k, class_freq_dist[k])
-
-    print('train-size = {}, test-size = {}, # of labels = {}'.format(
-        len(trainY), len(testY), len(set(trainY))))
-
-    # 
-
+    # Train and Predict
     clf = RandomForestClassifier(n_estimators=100, max_depth=None, n_jobs=-1, random_state=0)
     clf.fit(trainX, trainY)
+    predictions = clf.predict(testX)
 
+    # Get F1 by frequency (Note: This doesn't help anymore since everything is same freq).
+    label2freq = Counter(trainY)
     freq2metrics = {}
-
-    predictions = clf.predict(trainX)
-
     for yhat, y in zip(predictions, testY):
-        true_freq = class_dist[y]
-        false_freq = class_dist[yhat]
+        true_freq = label2freq[y]
+        false_freq = label2freq[yhat]
 
         for freq in [true_freq, false_freq]:
             if freq not in freq2metrics:
