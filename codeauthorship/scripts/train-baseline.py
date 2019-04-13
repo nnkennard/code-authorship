@@ -58,9 +58,22 @@ def get_dataset(path):
         tokens_to_ignore.append('DEDENT')
     if options.noencoding:
         tokens_to_ignore.append('ENCODING')
+    if options.noendmarker:
+        tokens_to_ignore.append('ENDMARKER')
+    if options.noerrortoken:
+        tokens_to_ignore.append('ERRORTOKEN')
+    if options.nonl:
+        tokens_to_ignore.append('NL')
+    if options.noname:
+        tokens_to_ignore.append('NAME')
+    if options.noop:
+        tokens_to_ignore.append('OP')
 
     def get_tokens(tokens):
-        return [x for x in tokens if x['type'] not in tokens_to_ignore]
+        xs = [x for x in tokens if x['type'] not in tokens_to_ignore]
+        if len(xs) <= 1:
+            xs.append({'val': 'FILLER', 'type': 'FILLER'})
+        return xs
 
     with open(path) as f:
         for i, line in enumerate(f):
@@ -256,6 +269,11 @@ if __name__ == "__main__":
     parser.add_argument('--noindent', action='store_true')
     parser.add_argument('--nodedent', action='store_true')
     parser.add_argument('--noencoding', action='store_true')
+    parser.add_argument('--noendmarker', action='store_true')
+    parser.add_argument('--noerrortoken', action='store_true')
+    parser.add_argument('--nonl', action='store_true')
+    parser.add_argument('--noname', action='store_true')
+    parser.add_argument('--noop', action='store_true')
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
