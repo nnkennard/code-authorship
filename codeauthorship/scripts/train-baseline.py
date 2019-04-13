@@ -303,8 +303,22 @@ def run(options):
 
     print('average-acc={:.3f}'.format(average_acc))
 
+    if options.json_result:
+        json_result = {}
+        json_result['flags'] = options.__dict__
+        json_result['average_acc'] = average_acc
+        print('JSON-RESULT={}'.format(json.dumps(json_result)))
+
 if __name__ == "__main__":
+
+    token_types = ['comment', 'string', 'newline', 'number',
+        'indent', 'dedent', 'encoding', 'endmarker',
+        'errortoken', 'nl', 'name', 'op']
+
     parser = argparse.ArgumentParser()
+    # debug
+    parser.add_argument('--json_result', action='store_true')
+    # args
     parser.add_argument('--path_in', default='~/Downloads/gcj-small.jsonl', type=str)
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
@@ -321,6 +335,19 @@ if __name__ == "__main__":
     parser.add_argument('--nonl', action='store_true')
     parser.add_argument('--noname', action='store_true')
     parser.add_argument('--noop', action='store_true')
+    # tokens to keep
+    parser.add_argument('--onlycomment', action='store_true')
+    parser.add_argument('--onlystring', action='store_true')
+    parser.add_argument('--onlynewline', action='store_true')
+    parser.add_argument('--onlynumber', action='store_true')
+    parser.add_argument('--onlyindent', action='store_true')
+    parser.add_argument('--onlydedent', action='store_true')
+    parser.add_argument('--onlyencoding', action='store_true')
+    parser.add_argument('--onlyendmarker', action='store_true')
+    parser.add_argument('--onlyerrortoken', action='store_true')
+    parser.add_argument('--onlynl', action='store_true')
+    parser.add_argument('--onlyname', action='store_true')
+    parser.add_argument('--onlyop', action='store_true')
     # data manipulation
     parser.add_argument('--obfuscate_names', action='store_true')
     options = parser.parse_args()
@@ -329,6 +356,21 @@ if __name__ == "__main__":
 
     if options.seed is None:
         options.seed = random.randint(0, 1e7)
+
+    # Functionality for the `only` flags.
+    # 1. If any `only` flags set, then turn off all features.
+    # 2. Enable features for any `only` flags.
+    for tt1 in token_types:
+        only_set = getattr(options, 'only{}'.format(tt1))
+        if only_set:
+            for tt2 in token_types:
+                setattr(options, 'no{}'.format(tt2), True)
+            break
+
+    for tt1 in token_types:
+        only_set = getattr(options, 'only{}'.format(tt1))
+        if only_set:
+            setattr(options, 'no{}'.format(tt1), False)
 
     print(json.dumps(options.__dict__, sort_keys=True))
 
