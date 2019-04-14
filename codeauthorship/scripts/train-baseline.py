@@ -17,15 +17,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import StratifiedKFold
 
 
+def get_reserved_words():
+    reserved_words = []
+    reserved_words += keyword.kwlist
+    reserved_words += dir(builtins)
+    return set(reserved_words)
+
+
 class ObfuscationAlgorithm(object):
     def __init__(self, rand_vocab_size=100000):
         super(ObfuscationAlgorithm, self).__init__()
 
-        reserved_words = []
-        reserved_words += keyword.kwlist
-        reserved_words += dir(builtins)
-
-        self.reserved_words = set(reserved_words)
+        self.reserved_words = get_reserved_words()
         self.rand_vocab = ['rand_vocab_{}'.format(i) for i in range(rand_vocab_size)]
         self.rand_vocab_size = rand_vocab_size
 
@@ -84,6 +87,8 @@ def get_dataset(path):
 
     # Read data.
     type_counter = Counter()
+    token_counter = Counter()
+    author2token_counter = {}
 
     tokens_to_ignore = []
 
@@ -112,27 +117,62 @@ def get_dataset(path):
     if options.noop:
         tokens_to_ignore.append('OP')
 
+    reserved_words = get_reserved_words()
+
+    count_token_author_usage_cache = {}
+    def count_token_author_usage(token):
+        if token not in count_token_author_usage_cache:
+            count_token_author_usage_cache[token] = sum(
+                [1 if counter[token] > 0 else 0 for counter in author2token_counter.values()])
+        return count_token_author_usage_cache[token]
+
     def get_tokens(tokens):
         xs = [x for x in tokens if x['type'] not in tokens_to_ignore]
         # There should always be at least two tokens.
         while len(xs) <= 1:
             xs.append({'val': 'FILLER', 'type': 'FILLER'})
         # Optionally, obfuscate the tokens.
+        if options.noreserved:
+            xs = [x for x in xs if x['type'] != 'NAME'
+                    or (x['type'] == 'NAME' and x['val'] not in reserved_words)]
+        if options.onlyreserved:
+            xs = [x for x in xs if x['type'] != 'NAME'
+                    or (x['type'] == 'NAME' and x['val'] in reserved_words)]
         if options.obfuscate_names:
             xs = obfuscate.obfuscate(xs)
+        if options.minthreshold_author > 0:
+            xs = [x for x in xs if x['type'] != 'NAME'
+                    or (x['type'] == 'NAME' and count_token_author_usage(x['val']) > options.minthreshold_author)]
         return xs
 
-    with open(path) as f:
-        for i, line in enumerate(f):
-            ex = json.loads(line)
-            tokens = get_tokens(ex['tokens'])
-            token_vals = [x['val'] for x in tokens]
-            token_types = [x['type'] for x in tokens]
-            type_counter.update(token_types)
+    # Read data once to build a vocab.
+    def readall():
+        with open(path) as f:
+            for i, line in enumerate(f):
+                ex = json.loads(line)
+                yield ex
 
-            seq.append(token_vals)
-            labels.append(ex['username'])
-            example_ids.append(ex['example_id'])
+    raw_data = list(readall())
+
+    for i, ex in enumerate(raw_data):
+        tokens = ex['tokens']
+        label = ex['username']
+        token_vals = [x['val'] for x in tokens if x['type'] == 'NAME']
+        token_counter.update(token_vals)
+        if label not in author2token_counter:
+            author2token_counter[label] = Counter()
+        author2token_counter[label].update(token_vals)
+
+    # Read again!
+    for i, ex in enumerate(raw_data):
+        tokens = get_tokens(ex['tokens'])
+        token_vals = [x['val'] for x in tokens]
+        token_types = [x['type'] for x in tokens]
+        type_counter.update(token_types)
+
+        seq.append(token_vals)
+        labels.append(ex['username'])
+        example_ids.append(ex['example_id'])
 
     lengths = [len(x) for x in seq]
     print('average-length = {}'.format(np.mean(lengths)))
@@ -350,6 +390,9 @@ if __name__ == "__main__":
     parser.add_argument('--onlyop', action='store_true')
     # data manipulation
     parser.add_argument('--obfuscate_names', action='store_true')
+    parser.add_argument('--noreserved', action='store_true')
+    parser.add_argument('--onlyreserved', action='store_true')
+    parser.add_argument('--minthreshold_author', default=0, type=int)
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
