@@ -12,6 +12,8 @@ from collections import Counter
 
 import numpy as np
 
+from tqdm import tqdm
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import StratifiedKFold
@@ -89,6 +91,7 @@ def get_dataset(path, options):
     type_counter = Counter()
     token_counter = Counter()
     author2token_counter = {}
+    token2authors = {}
 
     tokens_to_ignore = []
 
@@ -157,7 +160,7 @@ def get_dataset(path, options):
     for i, ex in enumerate(raw_data):
         tokens = ex['tokens']
         label = ex['username']
-        token_vals = [x['val'] for x in tokens if x['type'] == 'NAME']
+        token_vals = [x['val'].lower() for x in tokens if x['type'] == 'NAME']
         token_counter.update(token_vals)
         if label not in author2token_counter:
             author2token_counter[label] = Counter()
@@ -166,7 +169,7 @@ def get_dataset(path, options):
     # Read again!
     for i, ex in enumerate(raw_data):
         tokens = get_tokens(ex['tokens'])
-        token_vals = [x['val'] for x in tokens]
+        token_vals = [x['val'].lower() for x in tokens]
         token_types = [x['type'] for x in tokens]
         type_counter.update(token_types)
 
@@ -289,7 +292,7 @@ def run(options):
 
     contents = [' '.join(x) for x in dataset['primary']]
 
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(max_features=options.max_features)
     X = vectorizer.fit_transform(contents)
     Y = np.array(labels)
 
@@ -350,11 +353,123 @@ def run(options):
         print('JSON-RESULT={}'.format(json.dumps(json_result)))
 
 
+
+def run_feature_importance(options):
+    random.seed(options.seed)
+    np.random.seed(options.seed)
+    dataset = get_dataset(options.path_in, options)
+
+    print('dataset-size = {}'.format(dataset['metadata']['dataset_size']))
+    print('vocab-size = {}'.format(dataset['metadata']['vocab_size']))
+    print('# of classes = {}'.format(dataset['metadata']['n_classes']))
+
+    label2idx = dataset['metadata']['label2idx']
+    idx2label = {v: k for k, v in label2idx.items()}
+    labels = dataset['secondary']['labels']
+
+    contents = [' '.join(x) for x in dataset['primary']]
+
+    vectorizer = TfidfVectorizer(max_features=options.max_features)
+    X = vectorizer.fit_transform(contents)
+    Y = np.array(labels)
+
+    # Shuffle.
+    index = np.arange(Y.shape[0])
+    random.shuffle(index)
+    X = X[index]
+    Y = Y[index]
+
+    # Filter to classes with at least 9 instances (and balance labels).
+
+    ## First record 9 instances from each class (ignore classes with less than 9 instances).
+    index = np.arange(Y.shape[0])
+    index_to_keep = []
+    label_set = set(labels)
+    for label in label_set:
+        mask = Y == label
+        if mask.sum() < options.cutoff:
+            continue
+        # TODO: Should we take all of the instances?
+        index_to_keep += index[mask].tolist()[:options.cutoff]
+    index_to_keep = np.array(index_to_keep)
+
+    ## Then filter accordingly.
+    X = X[index_to_keep]
+    Y = Y[index_to_keep]
+
+    # Run k-fold cross validation.
+
+    acc_lst = []
+
+    cross_validation_splitter = StratifiedKFold(n_splits=9)
+
+    for i, (train_index, test_index) in enumerate(cross_validation_splitter.split(X, Y)):
+        trainX, testX = X[train_index], X[test_index]
+        trainY, testY = Y[train_index], Y[test_index]
+        train_results = run_train(trainX, trainY)
+        model = train_results['model']
+        eval_results = run_evaluation(model, testX, testY)
+        acc = eval_results['acc']
+
+        train_size = trainX.shape[0]
+        test_size = testX.shape[0]
+
+        print('fold={} train-size={} test-size={} acc={:.3f} '.format(
+            i, train_size, test_size, acc))
+
+        break
+
+    average_acc = acc
+
+    print('average-acc={:.3f}'.format(average_acc))
+
+    word2idx = vectorizer.vocabulary_
+    idx2word = {v: k for k, v in word2idx.items()}
+
+    token_counter = Counter()
+    token2authors = {}
+    for i, seq in enumerate(dataset['primary']):
+        label = labels[i]
+        token_counter.update(seq)
+        for x in seq:
+            token2authors.setdefault(x, set()).add(label)
+
+    # Feature importance
+    fi_lst = model.feature_importances_.tolist()
+    feature_importance = {}
+    for i in tqdm(range(model.feature_importances_.shape[0])):
+        feature_importance[idx2word[i]] = fi_lst[i]
+
+    # More.
+    token_authorcount = {}
+    for k in feature_importance.keys():
+        if k not in token2authors:
+            if k[2:] in token2authors:
+                k = k[2:]
+            elif k[:-2] in token2authors:
+                k = k[:-2]
+            elif k[2:-2] in token2authors:
+                k = k[2:-2]
+        token_authorcount[k] = len(token2authors[k])
+    # k: len(token2authors[k]) for k in feature_importance.keys()}
+    token_count = {k: token_counter[k] for k in feature_importance.keys()}
+
+    if options.json_result:
+        json_result = {}
+        json_result['flags'] = options.__dict__
+        json_result['average_acc'] = average_acc
+        json_result['feature_importance'] = feature_importance
+        json_result['token_authorcount'] = token_authorcount
+        json_result['token_count'] = token_count
+        print('JSON-RESULT={}'.format(json.dumps(json_result)))
+
+
 def get_argument_parser():
 
     parser = argparse.ArgumentParser()
     # debug
     parser.add_argument('--json_result', action='store_true')
+    parser.add_argument('--name', default=None, type=str)
     # args
     parser.add_argument('--path_in', default='~/Downloads/gcj-small.jsonl', type=str)
     parser.add_argument('--seed', default=None, type=int)
@@ -390,6 +505,8 @@ def get_argument_parser():
     parser.add_argument('--noreserved', action='store_true')
     parser.add_argument('--onlyreserved', action='store_true')
     parser.add_argument('--minthreshold_author', default=0, type=int)
+    parser.add_argument('--max_features', default=None, type=int)
+    parser.add_argument('--include_feature_importance', action='store_true')
     
     return parser
 
@@ -431,5 +548,9 @@ if __name__ == "__main__":
     options = parse_args(parser)
 
     print(json.dumps(options.__dict__, sort_keys=True))
+
+    if options.include_feature_importance:
+        run_feature_importance(options)
+        sys.exit()
 
     run(options)

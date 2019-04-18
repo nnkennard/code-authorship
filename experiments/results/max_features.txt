@@ -1,0 +1,757 @@
+begin
+{"cutoff": 9, "json_result": true, "max_features": 10, "minthreshold_author": 0, "name": "both-t_10", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5310796}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.663 
+fold=1 train-size=760 test-size=95 acc=0.800 
+fold=2 train-size=760 test-size=95 acc=0.684 
+fold=3 train-size=760 test-size=95 acc=0.726 
+fold=4 train-size=760 test-size=95 acc=0.674 
+fold=5 train-size=760 test-size=95 acc=0.726 
+fold=6 train-size=760 test-size=95 acc=0.684 
+fold=7 train-size=760 test-size=95 acc=0.716 
+fold=8 train-size=760 test-size=95 acc=0.737 
+average-acc=0.712
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_10", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5310796, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 10}, "average_acc": 0.712280701754386}
+{"cutoff": 9, "json_result": true, "max_features": 20, "minthreshold_author": 0, "name": "both-t_20", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8155897}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.863 
+fold=1 train-size=760 test-size=95 acc=0.832 
+fold=2 train-size=760 test-size=95 acc=0.842 
+fold=3 train-size=760 test-size=95 acc=0.779 
+fold=4 train-size=760 test-size=95 acc=0.758 
+fold=5 train-size=760 test-size=95 acc=0.853 
+fold=6 train-size=760 test-size=95 acc=0.863 
+fold=7 train-size=760 test-size=95 acc=0.821 
+fold=8 train-size=760 test-size=95 acc=0.811 
+average-acc=0.825
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_20", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8155897, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 20}, "average_acc": 0.8245614035087719}
+{"cutoff": 9, "json_result": true, "max_features": 40, "minthreshold_author": 0, "name": "both-t_40", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7600646}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.916 
+fold=1 train-size=760 test-size=95 acc=0.926 
+fold=2 train-size=760 test-size=95 acc=0.937 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.863 
+fold=5 train-size=760 test-size=95 acc=0.926 
+fold=6 train-size=760 test-size=95 acc=0.937 
+fold=7 train-size=760 test-size=95 acc=0.947 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.927
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_40", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7600646, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 40}, "average_acc": 0.9274853801169591}
+{"cutoff": 9, "json_result": true, "max_features": 60, "minthreshold_author": 0, "name": "both-t_60", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5113745}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.884 
+fold=1 train-size=760 test-size=95 acc=0.895 
+fold=2 train-size=760 test-size=95 acc=0.926 
+fold=3 train-size=760 test-size=95 acc=0.926 
+fold=4 train-size=760 test-size=95 acc=0.895 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.905 
+fold=7 train-size=760 test-size=95 acc=0.958 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.918
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_60", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5113745, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 60}, "average_acc": 0.9181286549707602}
+{"cutoff": 9, "json_result": true, "max_features": 80, "minthreshold_author": 0, "name": "both-t_80", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 857682}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.958 
+fold=1 train-size=760 test-size=95 acc=0.937 
+fold=2 train-size=760 test-size=95 acc=0.947 
+fold=3 train-size=760 test-size=95 acc=0.937 
+fold=4 train-size=760 test-size=95 acc=0.937 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.937 
+fold=7 train-size=760 test-size=95 acc=0.947 
+fold=8 train-size=760 test-size=95 acc=0.937 
+average-acc=0.943
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_80", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 857682, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 80}, "average_acc": 0.9426900584795322}
+{"cutoff": 9, "json_result": true, "max_features": 100, "minthreshold_author": 0, "name": "both-t_100", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1122286}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.958 
+fold=1 train-size=760 test-size=95 acc=0.958 
+fold=2 train-size=760 test-size=95 acc=0.958 
+fold=3 train-size=760 test-size=95 acc=0.905 
+fold=4 train-size=760 test-size=95 acc=0.958 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.916 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.947 
+average-acc=0.946
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_100", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1122286, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 100}, "average_acc": 0.9461988304093567}
+{"cutoff": 9, "json_result": true, "max_features": 200, "minthreshold_author": 0, "name": "both-t_200", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7136186}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.937 
+fold=1 train-size=760 test-size=95 acc=0.968 
+fold=2 train-size=760 test-size=95 acc=0.947 
+fold=3 train-size=760 test-size=95 acc=1.000 
+fold=4 train-size=760 test-size=95 acc=0.947 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.979 
+fold=8 train-size=760 test-size=95 acc=0.958 
+average-acc=0.957
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_200", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7136186, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 200}, "average_acc": 0.9567251461988303}
+{"cutoff": 9, "json_result": true, "max_features": 400, "minthreshold_author": 0, "name": "both-t_400", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3352563}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.968 
+fold=1 train-size=760 test-size=95 acc=0.926 
+fold=2 train-size=760 test-size=95 acc=0.926 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.979 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.968 
+fold=7 train-size=760 test-size=95 acc=0.958 
+fold=8 train-size=760 test-size=95 acc=0.989 
+average-acc=0.959
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_400", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3352563, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 400}, "average_acc": 0.9590643274853802}
+{"cutoff": 9, "json_result": true, "max_features": 600, "minthreshold_author": 0, "name": "both-t_600", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1267879}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.958 
+fold=1 train-size=760 test-size=95 acc=0.916 
+fold=2 train-size=760 test-size=95 acc=0.968 
+fold=3 train-size=760 test-size=95 acc=0.989 
+fold=4 train-size=760 test-size=95 acc=0.979 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.916 
+average-acc=0.952
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_600", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1267879, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 600}, "average_acc": 0.9520467836257309}
+{"cutoff": 9, "json_result": true, "max_features": 800, "minthreshold_author": 0, "name": "both-t_800", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 9209052}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.968 
+fold=1 train-size=760 test-size=95 acc=0.926 
+fold=2 train-size=760 test-size=95 acc=0.968 
+fold=3 train-size=760 test-size=95 acc=0.958 
+fold=4 train-size=760 test-size=95 acc=0.947 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.958 
+fold=7 train-size=760 test-size=95 acc=0.958 
+fold=8 train-size=760 test-size=95 acc=0.947 
+average-acc=0.953
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_800", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 9209052, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 800}, "average_acc": 0.9532163742690059}
+{"cutoff": 9, "json_result": true, "max_features": 1000, "minthreshold_author": 0, "name": "both-t_1000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 347467}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.958 
+fold=1 train-size=760 test-size=95 acc=0.937 
+fold=2 train-size=760 test-size=95 acc=0.947 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.979 
+fold=5 train-size=760 test-size=95 acc=0.979 
+fold=6 train-size=760 test-size=95 acc=0.989 
+fold=7 train-size=760 test-size=95 acc=0.989 
+fold=8 train-size=760 test-size=95 acc=0.979 
+average-acc=0.970
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_1000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 347467, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 1000}, "average_acc": 0.9695906432748538}
+{"cutoff": 9, "json_result": true, "max_features": 2000, "minthreshold_author": 0, "name": "both-t_2000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7127378}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.979 
+fold=1 train-size=760 test-size=95 acc=0.958 
+fold=2 train-size=760 test-size=95 acc=0.937 
+fold=3 train-size=760 test-size=95 acc=0.958 
+fold=4 train-size=760 test-size=95 acc=0.968 
+fold=5 train-size=760 test-size=95 acc=0.979 
+fold=6 train-size=760 test-size=95 acc=0.937 
+fold=7 train-size=760 test-size=95 acc=0.947 
+fold=8 train-size=760 test-size=95 acc=0.958 
+average-acc=0.958
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_2000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7127378, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 2000}, "average_acc": 0.9578947368421054}
+{"cutoff": 9, "json_result": true, "max_features": 3000, "minthreshold_author": 0, "name": "both-t_3000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6263891}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.989 
+fold=1 train-size=760 test-size=95 acc=0.989 
+fold=2 train-size=760 test-size=95 acc=0.947 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.979 
+fold=5 train-size=760 test-size=95 acc=0.979 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.937 
+fold=8 train-size=760 test-size=95 acc=0.958 
+average-acc=0.964
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_3000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6263891, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 3000}, "average_acc": 0.9637426900584796}
+{"cutoff": 9, "json_result": true, "max_features": 4000, "minthreshold_author": 0, "name": "both-t_4000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8602723}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 158.42704526286195
+NAME 563525
+dataset-size = 3557
+vocab-size = 11599
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.958 
+fold=1 train-size=760 test-size=95 acc=0.979 
+fold=2 train-size=760 test-size=95 acc=0.958 
+fold=3 train-size=760 test-size=95 acc=0.958 
+fold=4 train-size=760 test-size=95 acc=0.968 
+fold=5 train-size=760 test-size=95 acc=0.958 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.947 
+average-acc=0.958
+JSON-RESULT={"flags": {"json_result": true, "name": "both-t_4000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8602723, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": false, "minthreshold_author": 0, "max_features": 4000}, "average_acc": 0.9578947368421054}
+{"cutoff": 9, "json_result": true, "max_features": 10, "minthreshold_author": 0, "name": "onlyreserved-t_10", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3267519}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.632 
+fold=1 train-size=760 test-size=95 acc=0.653 
+fold=2 train-size=760 test-size=95 acc=0.663 
+fold=3 train-size=760 test-size=95 acc=0.747 
+fold=4 train-size=760 test-size=95 acc=0.789 
+fold=5 train-size=760 test-size=95 acc=0.674 
+fold=6 train-size=760 test-size=95 acc=0.737 
+fold=7 train-size=760 test-size=95 acc=0.663 
+fold=8 train-size=760 test-size=95 acc=0.653 
+average-acc=0.690
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_10", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3267519, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 10}, "average_acc": 0.6900584795321637}
+{"cutoff": 9, "json_result": true, "max_features": 20, "minthreshold_author": 0, "name": "onlyreserved-t_20", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2883980}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.789 
+fold=1 train-size=760 test-size=95 acc=0.768 
+fold=2 train-size=760 test-size=95 acc=0.842 
+fold=3 train-size=760 test-size=95 acc=0.832 
+fold=4 train-size=760 test-size=95 acc=0.779 
+fold=5 train-size=760 test-size=95 acc=0.905 
+fold=6 train-size=760 test-size=95 acc=0.853 
+fold=7 train-size=760 test-size=95 acc=0.821 
+fold=8 train-size=760 test-size=95 acc=0.832 
+average-acc=0.825
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_20", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2883980, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 20}, "average_acc": 0.8245614035087719}
+{"cutoff": 9, "json_result": true, "max_features": 40, "minthreshold_author": 0, "name": "onlyreserved-t_40", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8510738}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.874 
+fold=1 train-size=760 test-size=95 acc=0.842 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.853 
+fold=4 train-size=760 test-size=95 acc=0.874 
+fold=5 train-size=760 test-size=95 acc=0.832 
+fold=6 train-size=760 test-size=95 acc=0.916 
+fold=7 train-size=760 test-size=95 acc=0.853 
+fold=8 train-size=760 test-size=95 acc=0.832 
+average-acc=0.860
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_40", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8510738, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 40}, "average_acc": 0.8596491228070176}
+{"cutoff": 9, "json_result": true, "max_features": 60, "minthreshold_author": 0, "name": "onlyreserved-t_60", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 963868}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.884 
+fold=1 train-size=760 test-size=95 acc=0.874 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.853 
+fold=4 train-size=760 test-size=95 acc=0.853 
+fold=5 train-size=760 test-size=95 acc=0.853 
+fold=6 train-size=760 test-size=95 acc=0.874 
+fold=7 train-size=760 test-size=95 acc=0.895 
+fold=8 train-size=760 test-size=95 acc=0.863 
+average-acc=0.868
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_60", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 963868, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 60}, "average_acc": 0.8678362573099415}
+{"cutoff": 9, "json_result": true, "max_features": 80, "minthreshold_author": 0, "name": "onlyreserved-t_80", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3156597}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.884 
+fold=1 train-size=760 test-size=95 acc=0.821 
+fold=2 train-size=760 test-size=95 acc=0.853 
+fold=3 train-size=760 test-size=95 acc=0.895 
+fold=4 train-size=760 test-size=95 acc=0.874 
+fold=5 train-size=760 test-size=95 acc=0.905 
+fold=6 train-size=760 test-size=95 acc=0.853 
+fold=7 train-size=760 test-size=95 acc=0.895 
+fold=8 train-size=760 test-size=95 acc=0.821 
+average-acc=0.867
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_80", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3156597, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 80}, "average_acc": 0.8666666666666667}
+{"cutoff": 9, "json_result": true, "max_features": 100, "minthreshold_author": 0, "name": "onlyreserved-t_100", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2661763}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.832 
+fold=1 train-size=760 test-size=95 acc=0.863 
+fold=2 train-size=760 test-size=95 acc=0.832 
+fold=3 train-size=760 test-size=95 acc=0.863 
+fold=4 train-size=760 test-size=95 acc=0.863 
+fold=5 train-size=760 test-size=95 acc=0.863 
+fold=6 train-size=760 test-size=95 acc=0.863 
+fold=7 train-size=760 test-size=95 acc=0.832 
+fold=8 train-size=760 test-size=95 acc=0.874 
+average-acc=0.854
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_100", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2661763, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 100}, "average_acc": 0.8538011695906432}
+{"cutoff": 9, "json_result": true, "max_features": 200, "minthreshold_author": 0, "name": "onlyreserved-t_200", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7843810}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.895 
+fold=1 train-size=760 test-size=95 acc=0.874 
+fold=2 train-size=760 test-size=95 acc=0.884 
+fold=3 train-size=760 test-size=95 acc=0.853 
+fold=4 train-size=760 test-size=95 acc=0.863 
+fold=5 train-size=760 test-size=95 acc=0.874 
+fold=6 train-size=760 test-size=95 acc=0.832 
+fold=7 train-size=760 test-size=95 acc=0.842 
+fold=8 train-size=760 test-size=95 acc=0.842 
+average-acc=0.862
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_200", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7843810, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 200}, "average_acc": 0.8619883040935672}
+{"cutoff": 9, "json_result": true, "max_features": 400, "minthreshold_author": 0, "name": "onlyreserved-t_400", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 9866791}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.853 
+fold=1 train-size=760 test-size=95 acc=0.853 
+fold=2 train-size=760 test-size=95 acc=0.874 
+fold=3 train-size=760 test-size=95 acc=0.842 
+fold=4 train-size=760 test-size=95 acc=0.853 
+fold=5 train-size=760 test-size=95 acc=0.895 
+fold=6 train-size=760 test-size=95 acc=0.811 
+fold=7 train-size=760 test-size=95 acc=0.874 
+fold=8 train-size=760 test-size=95 acc=0.874 
+average-acc=0.858
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_400", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 9866791, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 400}, "average_acc": 0.8584795321637427}
+{"cutoff": 9, "json_result": true, "max_features": 600, "minthreshold_author": 0, "name": "onlyreserved-t_600", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2977349}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.853 
+fold=1 train-size=760 test-size=95 acc=0.811 
+fold=2 train-size=760 test-size=95 acc=0.874 
+fold=3 train-size=760 test-size=95 acc=0.863 
+fold=4 train-size=760 test-size=95 acc=0.842 
+fold=5 train-size=760 test-size=95 acc=0.895 
+fold=6 train-size=760 test-size=95 acc=0.863 
+fold=7 train-size=760 test-size=95 acc=0.832 
+fold=8 train-size=760 test-size=95 acc=0.895 
+average-acc=0.858
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_600", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2977349, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 600}, "average_acc": 0.8584795321637426}
+{"cutoff": 9, "json_result": true, "max_features": 800, "minthreshold_author": 0, "name": "onlyreserved-t_800", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 48111}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.821 
+fold=1 train-size=760 test-size=95 acc=0.853 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.853 
+fold=4 train-size=760 test-size=95 acc=0.853 
+fold=5 train-size=760 test-size=95 acc=0.832 
+fold=6 train-size=760 test-size=95 acc=0.884 
+fold=7 train-size=760 test-size=95 acc=0.842 
+fold=8 train-size=760 test-size=95 acc=0.874 
+average-acc=0.853
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_800", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 48111, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 800}, "average_acc": 0.8526315789473684}
+{"cutoff": 9, "json_result": true, "max_features": 1000, "minthreshold_author": 0, "name": "onlyreserved-t_1000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 80685}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.895 
+fold=1 train-size=760 test-size=95 acc=0.884 
+fold=2 train-size=760 test-size=95 acc=0.895 
+fold=3 train-size=760 test-size=95 acc=0.842 
+fold=4 train-size=760 test-size=95 acc=0.884 
+fold=5 train-size=760 test-size=95 acc=0.863 
+fold=6 train-size=760 test-size=95 acc=0.874 
+fold=7 train-size=760 test-size=95 acc=0.863 
+fold=8 train-size=760 test-size=95 acc=0.821 
+average-acc=0.869
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_1000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 80685, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 1000}, "average_acc": 0.8690058479532163}
+{"cutoff": 9, "json_result": true, "max_features": 2000, "minthreshold_author": 0, "name": "onlyreserved-t_2000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8885611}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.874 
+fold=1 train-size=760 test-size=95 acc=0.874 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.884 
+fold=4 train-size=760 test-size=95 acc=0.853 
+fold=5 train-size=760 test-size=95 acc=0.811 
+fold=6 train-size=760 test-size=95 acc=0.832 
+fold=7 train-size=760 test-size=95 acc=0.884 
+fold=8 train-size=760 test-size=95 acc=0.811 
+average-acc=0.854
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_2000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8885611, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 2000}, "average_acc": 0.8538011695906432}
+{"cutoff": 9, "json_result": true, "max_features": 3000, "minthreshold_author": 0, "name": "onlyreserved-t_3000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6335933}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.789 
+fold=1 train-size=760 test-size=95 acc=0.811 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.821 
+fold=4 train-size=760 test-size=95 acc=0.916 
+fold=5 train-size=760 test-size=95 acc=0.874 
+fold=6 train-size=760 test-size=95 acc=0.895 
+fold=7 train-size=760 test-size=95 acc=0.811 
+fold=8 train-size=760 test-size=95 acc=0.874 
+average-acc=0.850
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_3000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6335933, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 3000}, "average_acc": 0.8502923976608187}
+{"cutoff": 9, "json_result": true, "max_features": 4000, "minthreshold_author": 0, "name": "onlyreserved-t_4000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": false, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": true, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 384572}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 43.99240933370818
+NAME 156481
+dataset-size = 3557
+vocab-size = 109
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.895 
+fold=1 train-size=760 test-size=95 acc=0.863 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.895 
+fold=4 train-size=760 test-size=95 acc=0.863 
+fold=5 train-size=760 test-size=95 acc=0.895 
+fold=6 train-size=760 test-size=95 acc=0.800 
+fold=7 train-size=760 test-size=95 acc=0.895 
+fold=8 train-size=760 test-size=95 acc=0.853 
+average-acc=0.869
+JSON-RESULT={"flags": {"json_result": true, "name": "onlyreserved-t_4000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 384572, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": false, "onlyreserved": true, "minthreshold_author": 0, "max_features": 4000}, "average_acc": 0.8690058479532163}
+{"cutoff": 9, "json_result": true, "max_features": 10, "minthreshold_author": 0, "name": "noreserved-t_10", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5258454}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.695 
+fold=1 train-size=760 test-size=95 acc=0.737 
+fold=2 train-size=760 test-size=95 acc=0.800 
+fold=3 train-size=760 test-size=95 acc=0.716 
+fold=4 train-size=760 test-size=95 acc=0.737 
+fold=5 train-size=760 test-size=95 acc=0.768 
+fold=6 train-size=760 test-size=95 acc=0.737 
+fold=7 train-size=760 test-size=95 acc=0.737 
+fold=8 train-size=760 test-size=95 acc=0.747 
+average-acc=0.742
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_10", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5258454, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 10}, "average_acc": 0.7415204678362574}
+{"cutoff": 9, "json_result": true, "max_features": 20, "minthreshold_author": 0, "name": "noreserved-t_20", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1304232}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.821 
+fold=1 train-size=760 test-size=95 acc=0.853 
+fold=2 train-size=760 test-size=95 acc=0.863 
+fold=3 train-size=760 test-size=95 acc=0.842 
+fold=4 train-size=760 test-size=95 acc=0.895 
+fold=5 train-size=760 test-size=95 acc=0.884 
+fold=6 train-size=760 test-size=95 acc=0.853 
+fold=7 train-size=760 test-size=95 acc=0.874 
+fold=8 train-size=760 test-size=95 acc=0.916 
+average-acc=0.867
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_20", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1304232, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 20}, "average_acc": 0.8666666666666666}
+{"cutoff": 9, "json_result": true, "max_features": 40, "minthreshold_author": 0, "name": "noreserved-t_40", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2009661}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.937 
+fold=1 train-size=760 test-size=95 acc=0.905 
+fold=2 train-size=760 test-size=95 acc=0.884 
+fold=3 train-size=760 test-size=95 acc=0.895 
+fold=4 train-size=760 test-size=95 acc=0.916 
+fold=5 train-size=760 test-size=95 acc=0.874 
+fold=6 train-size=760 test-size=95 acc=0.916 
+fold=7 train-size=760 test-size=95 acc=0.937 
+fold=8 train-size=760 test-size=95 acc=0.884 
+average-acc=0.905
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_40", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2009661, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 40}, "average_acc": 0.9052631578947368}
+{"cutoff": 9, "json_result": true, "max_features": 60, "minthreshold_author": 0, "name": "noreserved-t_60", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5499048}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.968 
+fold=1 train-size=760 test-size=95 acc=0.895 
+fold=2 train-size=760 test-size=95 acc=0.884 
+fold=3 train-size=760 test-size=95 acc=0.926 
+fold=4 train-size=760 test-size=95 acc=0.895 
+fold=5 train-size=760 test-size=95 acc=0.884 
+fold=6 train-size=760 test-size=95 acc=0.853 
+fold=7 train-size=760 test-size=95 acc=0.926 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.906
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_60", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5499048, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 60}, "average_acc": 0.9064327485380116}
+{"cutoff": 9, "json_result": true, "max_features": 80, "minthreshold_author": 0, "name": "noreserved-t_80", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2033559}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.926 
+fold=1 train-size=760 test-size=95 acc=0.916 
+fold=2 train-size=760 test-size=95 acc=0.937 
+fold=3 train-size=760 test-size=95 acc=0.895 
+fold=4 train-size=760 test-size=95 acc=0.895 
+fold=5 train-size=760 test-size=95 acc=0.895 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.947 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.918
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_80", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 2033559, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 80}, "average_acc": 0.9181286549707601}
+{"cutoff": 9, "json_result": true, "max_features": 100, "minthreshold_author": 0, "name": "noreserved-t_100", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5876305}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.884 
+fold=1 train-size=760 test-size=95 acc=0.947 
+fold=2 train-size=760 test-size=95 acc=0.937 
+fold=3 train-size=760 test-size=95 acc=0.916 
+fold=4 train-size=760 test-size=95 acc=0.958 
+fold=5 train-size=760 test-size=95 acc=0.968 
+fold=6 train-size=760 test-size=95 acc=0.905 
+fold=7 train-size=760 test-size=95 acc=0.958 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.933
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_100", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 5876305, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 100}, "average_acc": 0.9333333333333333}
+{"cutoff": 9, "json_result": true, "max_features": 200, "minthreshold_author": 0, "name": "noreserved-t_200", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6410133}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.926 
+fold=1 train-size=760 test-size=95 acc=0.937 
+fold=2 train-size=760 test-size=95 acc=0.958 
+fold=3 train-size=760 test-size=95 acc=0.937 
+fold=4 train-size=760 test-size=95 acc=0.937 
+fold=5 train-size=760 test-size=95 acc=0.916 
+fold=6 train-size=760 test-size=95 acc=0.958 
+fold=7 train-size=760 test-size=95 acc=0.937 
+fold=8 train-size=760 test-size=95 acc=0.947 
+average-acc=0.939
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_200", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 6410133, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 200}, "average_acc": 0.9391812865497076}
+{"cutoff": 9, "json_result": true, "max_features": 400, "minthreshold_author": 0, "name": "noreserved-t_400", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8025013}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.947 
+fold=1 train-size=760 test-size=95 acc=0.958 
+fold=2 train-size=760 test-size=95 acc=0.958 
+fold=3 train-size=760 test-size=95 acc=0.947 
+fold=4 train-size=760 test-size=95 acc=0.968 
+fold=5 train-size=760 test-size=95 acc=0.958 
+fold=6 train-size=760 test-size=95 acc=0.926 
+fold=7 train-size=760 test-size=95 acc=0.926 
+fold=8 train-size=760 test-size=95 acc=0.916 
+average-acc=0.945
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_400", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 8025013, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 400}, "average_acc": 0.9450292397660819}
+{"cutoff": 9, "json_result": true, "max_features": 600, "minthreshold_author": 0, "name": "noreserved-t_600", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7248901}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.979 
+fold=1 train-size=760 test-size=95 acc=0.968 
+fold=2 train-size=760 test-size=95 acc=0.968 
+fold=3 train-size=760 test-size=95 acc=0.947 
+fold=4 train-size=760 test-size=95 acc=0.905 
+fold=5 train-size=760 test-size=95 acc=0.968 
+fold=6 train-size=760 test-size=95 acc=0.958 
+fold=7 train-size=760 test-size=95 acc=0.937 
+fold=8 train-size=760 test-size=95 acc=0.958 
+average-acc=0.954
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_600", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7248901, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 600}, "average_acc": 0.9543859649122807}
+{"cutoff": 9, "json_result": true, "max_features": 800, "minthreshold_author": 0, "name": "noreserved-t_800", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 4108117}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.916 
+fold=1 train-size=760 test-size=95 acc=0.926 
+fold=2 train-size=760 test-size=95 acc=0.926 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.958 
+fold=5 train-size=760 test-size=95 acc=0.947 
+fold=6 train-size=760 test-size=95 acc=0.947 
+fold=7 train-size=760 test-size=95 acc=0.979 
+fold=8 train-size=760 test-size=95 acc=0.979 
+average-acc=0.950
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_800", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 4108117, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 800}, "average_acc": 0.9497076023391813}
+{"cutoff": 9, "json_result": true, "max_features": 1000, "minthreshold_author": 0, "name": "noreserved-t_1000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7492053}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.968 
+fold=1 train-size=760 test-size=95 acc=0.937 
+fold=2 train-size=760 test-size=95 acc=0.947 
+fold=3 train-size=760 test-size=95 acc=0.947 
+fold=4 train-size=760 test-size=95 acc=0.968 
+fold=5 train-size=760 test-size=95 acc=0.968 
+fold=6 train-size=760 test-size=95 acc=0.958 
+fold=7 train-size=760 test-size=95 acc=0.937 
+fold=8 train-size=760 test-size=95 acc=0.947 
+average-acc=0.953
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_1000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 7492053, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 1000}, "average_acc": 0.9532163742690059}
+{"cutoff": 9, "json_result": true, "max_features": 2000, "minthreshold_author": 0, "name": "noreserved-t_2000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3385485}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.926 
+fold=1 train-size=760 test-size=95 acc=0.947 
+fold=2 train-size=760 test-size=95 acc=0.979 
+fold=3 train-size=760 test-size=95 acc=0.926 
+fold=4 train-size=760 test-size=95 acc=0.989 
+fold=5 train-size=760 test-size=95 acc=0.989 
+fold=6 train-size=760 test-size=95 acc=0.937 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.937 
+average-acc=0.956
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_2000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3385485, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 2000}, "average_acc": 0.9555555555555557}
+{"cutoff": 9, "json_result": true, "max_features": 3000, "minthreshold_author": 0, "name": "noreserved-t_3000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1598111}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.905 
+fold=1 train-size=760 test-size=95 acc=0.989 
+fold=2 train-size=760 test-size=95 acc=0.916 
+fold=3 train-size=760 test-size=95 acc=0.968 
+fold=4 train-size=760 test-size=95 acc=0.947 
+fold=5 train-size=760 test-size=95 acc=0.958 
+fold=6 train-size=760 test-size=95 acc=0.958 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.926 
+average-acc=0.949
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_3000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 1598111, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 3000}, "average_acc": 0.9485380116959065}
+{"cutoff": 9, "json_result": true, "max_features": 4000, "minthreshold_author": 0, "name": "noreserved-t_4000", "nocomment": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "noindent": true, "noname": false, "nonewline": true, "nonl": true, "nonumber": true, "noop": true, "noreserved": true, "nostring": true, "obfuscate_names": false, "onlycomment": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlyindent": false, "onlyname": true, "onlynewline": false, "onlynl": false, "onlynumber": false, "onlyop": false, "onlyreserved": false, "onlystring": false, "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3991865}
+reading = /Users/adrozdov/Downloads/gcj-small.jsonl
+average-length = 114.43463592915379
+NAME 407044
+dataset-size = 3557
+vocab-size = 11490
+# of classes = 683
+fold=0 train-size=760 test-size=95 acc=0.947 
+fold=1 train-size=760 test-size=95 acc=0.979 
+fold=2 train-size=760 test-size=95 acc=0.958 
+fold=3 train-size=760 test-size=95 acc=0.937 
+fold=4 train-size=760 test-size=95 acc=0.947 
+fold=5 train-size=760 test-size=95 acc=0.926 
+fold=6 train-size=760 test-size=95 acc=0.979 
+fold=7 train-size=760 test-size=95 acc=0.968 
+fold=8 train-size=760 test-size=95 acc=0.937 
+average-acc=0.953
+JSON-RESULT={"flags": {"json_result": true, "name": "noreserved-t_4000", "path_in": "/Users/adrozdov/Downloads/gcj-small.jsonl", "seed": 3991865, "cutoff": 9, "nocomment": true, "nostring": true, "nonewline": true, "nonumber": true, "noindent": true, "nodedent": true, "noencoding": true, "noendmarker": true, "noerrortoken": true, "nonl": true, "noname": false, "noop": true, "onlycomment": false, "onlystring": false, "onlynewline": false, "onlynumber": false, "onlyindent": false, "onlydedent": false, "onlyencoding": false, "onlyendmarker": false, "onlyerrortoken": false, "onlynl": false, "onlyname": true, "onlyop": false, "obfuscate_names": false, "noreserved": true, "onlyreserved": false, "minthreshold_author": 0, "max_features": 4000}, "average_acc": 0.9532163742690059}
