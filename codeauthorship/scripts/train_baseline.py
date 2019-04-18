@@ -64,7 +64,7 @@ def indexify(value2idx, lst):
     return list(func())
 
 
-def get_dataset(path):
+def get_dataset(path, options):
     print('reading = {}'.format(path))
 
     # Local variables.
@@ -277,7 +277,7 @@ def run_experiment(trainX, trainY, testX, testY):
 def run(options):
     random.seed(options.seed)
     np.random.seed(options.seed)
-    dataset = get_dataset(options.path_in)
+    dataset = get_dataset(options.path_in, options)
 
     print('dataset-size = {}'.format(dataset['metadata']['dataset_size']))
     print('vocab-size = {}'.format(dataset['metadata']['vocab_size']))
@@ -349,11 +349,8 @@ def run(options):
         json_result['average_acc'] = average_acc
         print('JSON-RESULT={}'.format(json.dumps(json_result)))
 
-if __name__ == "__main__":
 
-    token_types = ['comment', 'string', 'newline', 'number',
-        'indent', 'dedent', 'encoding', 'endmarker',
-        'errortoken', 'nl', 'name', 'op']
+def get_argument_parser():
 
     parser = argparse.ArgumentParser()
     # debug
@@ -393,6 +390,16 @@ if __name__ == "__main__":
     parser.add_argument('--noreserved', action='store_true')
     parser.add_argument('--onlyreserved', action='store_true')
     parser.add_argument('--minthreshold_author', default=0, type=int)
+    
+    return parser
+
+
+def parse_args(parser):
+
+    token_types = ['comment', 'string', 'newline', 'number',
+        'indent', 'dedent', 'encoding', 'endmarker',
+        'errortoken', 'nl', 'name', 'op']
+
     options = parser.parse_args()
 
     options.path_in = os.path.expanduser(options.path_in)
@@ -414,6 +421,14 @@ if __name__ == "__main__":
         only_set = getattr(options, 'only{}'.format(tt1))
         if only_set:
             setattr(options, 'no{}'.format(tt1), False)
+
+    return options
+
+
+if __name__ == "__main__":
+
+    parser = get_argument_parser()
+    options = parse_args(parser)
 
     print(json.dumps(options.__dict__, sort_keys=True))
 
