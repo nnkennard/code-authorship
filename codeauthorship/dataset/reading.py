@@ -1,5 +1,7 @@
 import json
 
+from collections import deque
+
 
 def indexify(value2idx, lst):
     def func():
@@ -42,17 +44,50 @@ class DatasetReader(object):
             records = self.readfile(self.path_cpp)
             datasets.append(self.dataset_cpp.build(records))
 
-        dataset = ConsolidateDatasets().build(datasets)
+        datasets = ConsolidateDatasets().build(datasets)
+
+        return datasets
 
 
 class ConsolidateDatasets(object):
+    def consolidate_mappings(self, mapping_lst):
+        master_mapping = {}
+        inverse_mapping_lst = []
+        for x2y in mapping_lst:
+            old2master = {}
+            for x, y in x2y.items():
+                if x not in inverse_mapping_lst:
+                    master_mapping[x] = len(master_mapping)
+                old2master[y] = master_mapping[x]
+            inverse_mapping_lst.append(old2master)
+        return master_mapping, inverse_mapping_lst
+
+    def reindex(self, data, inverse_mapping):
+        def fn(s):
+            if isinstance(s, (list, tuple)):
+                return [inverse_mapping[idx] for idx in s]
+            else:
+                return inverse_mapping[s]
+        def queue(lst):
+            q = deque(lst)
+            while len(q) > 0:
+                yield q.popleft()
+        return [fn(s) for s in queue(data)]
+
     def build(self, datasets):
         """
         - Align labels between multiple datasets.
         - Creates one large dataset.
-        - Adds a new secondary option for language.
         """
-        pass
+
+        label2idx_lst = [x['metadata']['label2idx'] for x in datasets]
+        label2idx_master, inverse_mapping_lst = self.consolidate_mappings(label2idx_lst)
+
+        for dset, inverse_mapping in zip(datasets, inverse_mapping_lst):
+            dset['secondary']['labels'] = self.reindex(dset['secondary']['labels'], inverse_mapping)
+            dset['metadata']['label2idx'] = label2idx_master
+
+        return datasets
 
 
 class Dataset(object):
@@ -91,6 +126,7 @@ class Dataset(object):
         extra['example_ids'] = example_ids
         extra['labels'] = labels
         extra['seq_types'] = seq_types
+        extra['lang'] = [self.language] * len(example_ids)
 
         metadata['label2idx'] = label2idx
         metadata['language'] = self.language
