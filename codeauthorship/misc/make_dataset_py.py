@@ -96,10 +96,10 @@ if __name__ == '__main__':
 
     if options.preset == 'small':
         options.path_in = '~/Downloads/gcj2008.csv'
-        options.path_out = '~/Downloads/gcj-small.jsonl'
+        options.path_out = '~/Downloads/gcj-py-small.jsonl'
     elif options.preset == 'medium':
         options.path_in = '~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv'
-        options.path_out = '~/Downloads/gcj-medium.jsonl'
+        options.path_out = '~/Downloads/gcj-py-medium.jsonl'
 
     options.path_out = os.path.expanduser(options.path_out)
 
