@@ -81,6 +81,7 @@ def get_dataset(path, options):
 
     # Secondary data. len(seq) == len(extra[key])
     extra = {}
+    seq_types = []
     labels = []
     example_ids = []
 
@@ -174,6 +175,7 @@ def get_dataset(path, options):
         type_counter.update(token_types)
 
         seq.append(token_vals)
+        seq_types.append(token_types)
         labels.append(ex['username'])
         example_ids.append(ex['example_id'])
 
@@ -201,6 +203,7 @@ def get_dataset(path, options):
     # Record everything.
     extra['example_ids'] = example_ids
     extra['labels'] = labels
+    extra['seq_types'] = seq_types
     metadata['dataset_size'] = len(example_ids)
     metadata['label2idx'] = label2idx
     metadata['n_classes'] = len(label2idx)
