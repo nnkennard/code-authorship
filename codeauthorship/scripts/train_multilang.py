@@ -1,3 +1,33 @@
+"""
+
+TODO List
+
+- Build a larger dataset.
+- Record accuracy per language.
+- Get examples of files that we were not able to classify correctly.
+- Are there authors we are especially bad at?
+- Is there duplication between the files?
+- Re-run existing experiments with larger data.
+    - Feature Ablation - Keep 1 or 2.
+    - Feature Ablation - Remove 1 or 2.
+    - Feature Importance code images.
+    - Frequency of NAME tokens with TFIDF scores.
+    - Performance by number of features.
+    - Performance by usage.
+
+- New experiments.
+    - Python and C
+
+- Things to double check.
+    - How many authors are we using?
+    - How much code from each language are we using?
+        - Venn Diagram with # of tokens
+        - Venn Diagram with # of files
+    - How often does duplication appear?
+
+"""
+
+
 import argparse
 import os
 import json
