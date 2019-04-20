@@ -1,0 +1,593 @@
+begin
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:47:01,812 [INFO] start
+2019-04-20 18:48:05,366 [INFO] balancing data
+2019-04-20 18:48:09,684 [INFO] found 5763 eligible classes
+2019-04-20 18:48:09,685 [INFO] downsampled to 50 classes
+2019-04-20 18:48:09,693 [INFO] joining strings
+2019-04-20 18:48:09,696 [INFO] tfidf data
+2019-04-20 18:48:09,747 [INFO] language-counter=Counter({'python': 450})
+2019-04-20 18:48:09,747 [INFO] fold 0
+2019-04-20 18:48:09,755 [INFO] train
+2019-04-20 18:48:09,755 [INFO] n-classes=50
+2019-04-20 18:48:09,863 [INFO] depths = [38, 35, 38, 39]
+2019-04-20 18:48:09,864 [INFO] leaf-node-counts = [38, 35, 38, 39]
+2019-04-20 18:48:09,865 [INFO] eval
+2019-04-20 18:48:09,967 [INFO] eval-acc=0.780
+2019-04-20 18:48:09,967 [INFO] fold 1
+2019-04-20 18:48:09,968 [INFO] train
+2019-04-20 18:48:09,968 [INFO] n-classes=50
+2019-04-20 18:48:10,079 [INFO] depths = [30, 35, 33, 36]
+2019-04-20 18:48:10,080 [INFO] leaf-node-counts = [30, 35, 33, 36]
+2019-04-20 18:48:10,080 [INFO] eval
+2019-04-20 18:48:10,182 [INFO] eval-acc=0.720
+2019-04-20 18:48:10,182 [INFO] fold 2
+2019-04-20 18:48:10,184 [INFO] train
+2019-04-20 18:48:10,184 [INFO] n-classes=50
+2019-04-20 18:48:10,296 [INFO] depths = [27, 32, 43, 29]
+2019-04-20 18:48:10,297 [INFO] leaf-node-counts = [27, 32, 43, 29]
+2019-04-20 18:48:10,297 [INFO] eval
+2019-04-20 18:48:10,399 [INFO] eval-acc=0.780
+2019-04-20 18:48:10,399 [INFO] fold 3
+2019-04-20 18:48:10,401 [INFO] train
+2019-04-20 18:48:10,401 [INFO] n-classes=50
+2019-04-20 18:48:10,507 [INFO] depths = [36, 41, 42, 26]
+2019-04-20 18:48:10,508 [INFO] leaf-node-counts = [36, 41, 42, 26]
+2019-04-20 18:48:10,508 [INFO] eval
+2019-04-20 18:48:10,610 [INFO] eval-acc=0.820
+2019-04-20 18:48:10,610 [INFO] fold 4
+2019-04-20 18:48:10,612 [INFO] train
+2019-04-20 18:48:10,612 [INFO] n-classes=50
+2019-04-20 18:48:10,724 [INFO] depths = [24, 33, 41, 29]
+2019-04-20 18:48:10,726 [INFO] leaf-node-counts = [24, 33, 41, 29]
+2019-04-20 18:48:10,726 [INFO] eval
+2019-04-20 18:48:10,828 [INFO] eval-acc=0.620
+2019-04-20 18:48:10,828 [INFO] fold 5
+2019-04-20 18:48:10,830 [INFO] train
+2019-04-20 18:48:10,830 [INFO] n-classes=50
+2019-04-20 18:48:10,941 [INFO] depths = [34, 34, 33, 37]
+2019-04-20 18:48:10,942 [INFO] leaf-node-counts = [34, 34, 33, 37]
+2019-04-20 18:48:10,942 [INFO] eval
+2019-04-20 18:48:11,044 [INFO] eval-acc=0.740
+2019-04-20 18:48:11,044 [INFO] fold 6
+2019-04-20 18:48:11,046 [INFO] train
+2019-04-20 18:48:11,047 [INFO] n-classes=50
+2019-04-20 18:48:11,159 [INFO] depths = [29, 30, 31, 30]
+2019-04-20 18:48:11,162 [INFO] leaf-node-counts = [29, 30, 31, 30]
+2019-04-20 18:48:11,162 [INFO] eval
+2019-04-20 18:48:11,265 [INFO] eval-acc=0.700
+2019-04-20 18:48:11,265 [INFO] fold 7
+2019-04-20 18:48:11,267 [INFO] train
+2019-04-20 18:48:11,267 [INFO] n-classes=50
+2019-04-20 18:48:11,379 [INFO] depths = [43, 30, 43, 55]
+2019-04-20 18:48:11,380 [INFO] leaf-node-counts = [43, 30, 43, 55]
+2019-04-20 18:48:11,380 [INFO] eval
+2019-04-20 18:48:11,482 [INFO] eval-acc=0.740
+2019-04-20 18:48:11,482 [INFO] fold 8
+2019-04-20 18:48:11,484 [INFO] train
+2019-04-20 18:48:11,484 [INFO] n-classes=50
+2019-04-20 18:48:11,595 [INFO] depths = [27, 37, 27, 29]
+2019-04-20 18:48:11,596 [INFO] leaf-node-counts = [27, 37, 27, 29]
+2019-04-20 18:48:11,596 [INFO] eval
+2019-04-20 18:48:11,698 [INFO] eval-acc=0.740
+2019-04-20 18:48:11,699 [INFO] acc-mean=0.738 acc-std=0.054 acc-max=0.820
+{"metrics": {"acc_max": 0.82, "acc_mean": 0.7377777777777779, "acc_std": 0.053702426549309214}, "options": {"cutoff": 9, "json_result": true, "max_classes": 50, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 2498074, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:48:34,695 [INFO] start
+2019-04-20 18:49:37,932 [INFO] balancing data
+2019-04-20 18:49:42,291 [INFO] found 5763 eligible classes
+2019-04-20 18:49:42,292 [INFO] downsampled to 100 classes
+2019-04-20 18:49:42,300 [INFO] joining strings
+2019-04-20 18:49:42,306 [INFO] tfidf data
+2019-04-20 18:49:42,431 [INFO] language-counter=Counter({'python': 900})
+2019-04-20 18:49:42,431 [INFO] fold 0
+2019-04-20 18:49:42,447 [INFO] train
+2019-04-20 18:49:42,447 [INFO] n-classes=100
+2019-04-20 18:49:42,554 [INFO] depths = [63, 68, 59, 57]
+2019-04-20 18:49:42,559 [INFO] leaf-node-counts = [63, 68, 59, 57]
+2019-04-20 18:49:42,559 [INFO] eval
+2019-04-20 18:49:42,662 [INFO] eval-acc=0.720
+2019-04-20 18:49:42,662 [INFO] fold 1
+2019-04-20 18:49:42,664 [INFO] train
+2019-04-20 18:49:42,665 [INFO] n-classes=100
+2019-04-20 18:49:42,777 [INFO] depths = [54, 58, 59, 53]
+2019-04-20 18:49:42,781 [INFO] leaf-node-counts = [54, 58, 59, 53]
+2019-04-20 18:49:42,781 [INFO] eval
+2019-04-20 18:49:42,884 [INFO] eval-acc=0.630
+2019-04-20 18:49:42,884 [INFO] fold 2
+2019-04-20 18:49:42,886 [INFO] train
+2019-04-20 18:49:42,886 [INFO] n-classes=100
+2019-04-20 18:49:42,998 [INFO] depths = [55, 70, 55, 62]
+2019-04-20 18:49:43,002 [INFO] leaf-node-counts = [55, 70, 55, 62]
+2019-04-20 18:49:43,002 [INFO] eval
+2019-04-20 18:49:43,105 [INFO] eval-acc=0.660
+2019-04-20 18:49:43,105 [INFO] fold 3
+2019-04-20 18:49:43,107 [INFO] train
+2019-04-20 18:49:43,108 [INFO] n-classes=100
+2019-04-20 18:49:43,221 [INFO] depths = [55, 72, 60, 66]
+2019-04-20 18:49:43,226 [INFO] leaf-node-counts = [55, 72, 60, 66]
+2019-04-20 18:49:43,226 [INFO] eval
+2019-04-20 18:49:43,329 [INFO] eval-acc=0.740
+2019-04-20 18:49:43,329 [INFO] fold 4
+2019-04-20 18:49:43,332 [INFO] train
+2019-04-20 18:49:43,332 [INFO] n-classes=100
+2019-04-20 18:49:43,444 [INFO] depths = [69, 67, 59, 72]
+2019-04-20 18:49:43,447 [INFO] leaf-node-counts = [69, 67, 59, 72]
+2019-04-20 18:49:43,447 [INFO] eval
+2019-04-20 18:49:43,549 [INFO] eval-acc=0.710
+2019-04-20 18:49:43,549 [INFO] fold 5
+2019-04-20 18:49:43,551 [INFO] train
+2019-04-20 18:49:43,551 [INFO] n-classes=100
+2019-04-20 18:49:43,663 [INFO] depths = [69, 68, 68, 52]
+2019-04-20 18:49:43,669 [INFO] leaf-node-counts = [69, 68, 68, 52]
+2019-04-20 18:49:43,669 [INFO] eval
+2019-04-20 18:49:43,772 [INFO] eval-acc=0.700
+2019-04-20 18:49:43,773 [INFO] fold 6
+2019-04-20 18:49:43,775 [INFO] train
+2019-04-20 18:49:43,776 [INFO] n-classes=100
+2019-04-20 18:49:43,888 [INFO] depths = [61, 70, 62, 51]
+2019-04-20 18:49:43,893 [INFO] leaf-node-counts = [61, 70, 62, 51]
+2019-04-20 18:49:43,893 [INFO] eval
+2019-04-20 18:49:43,996 [INFO] eval-acc=0.660
+2019-04-20 18:49:43,996 [INFO] fold 7
+2019-04-20 18:49:43,998 [INFO] train
+2019-04-20 18:49:43,999 [INFO] n-classes=100
+2019-04-20 18:49:44,110 [INFO] depths = [71, 65, 64, 41]
+2019-04-20 18:49:44,116 [INFO] leaf-node-counts = [71, 65, 64, 41]
+2019-04-20 18:49:44,116 [INFO] eval
+2019-04-20 18:49:44,219 [INFO] eval-acc=0.700
+2019-04-20 18:49:44,220 [INFO] fold 8
+2019-04-20 18:49:44,222 [INFO] train
+2019-04-20 18:49:44,223 [INFO] n-classes=100
+2019-04-20 18:49:44,336 [INFO] depths = [66, 46, 69, 65]
+2019-04-20 18:49:44,339 [INFO] leaf-node-counts = [66, 46, 69, 65]
+2019-04-20 18:49:44,339 [INFO] eval
+2019-04-20 18:49:44,442 [INFO] eval-acc=0.720
+2019-04-20 18:49:44,442 [INFO] acc-mean=0.693 acc-std=0.034 acc-max=0.740
+{"metrics": {"acc_max": 0.74, "acc_mean": 0.6933333333333332, "acc_std": 0.033665016461206905}, "options": {"cutoff": 9, "json_result": true, "max_classes": 100, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 5778856, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:50:07,483 [INFO] start
+2019-04-20 18:51:10,920 [INFO] balancing data
+2019-04-20 18:51:15,247 [INFO] found 5763 eligible classes
+2019-04-20 18:51:15,247 [INFO] downsampled to 150 classes
+2019-04-20 18:51:15,256 [INFO] joining strings
+2019-04-20 18:51:15,265 [INFO] tfidf data
+2019-04-20 18:51:15,431 [INFO] language-counter=Counter({'python': 1350})
+2019-04-20 18:51:15,432 [INFO] fold 0
+2019-04-20 18:51:15,455 [INFO] train
+2019-04-20 18:51:15,455 [INFO] n-classes=150
+2019-04-20 18:51:15,563 [INFO] depths = [109, 94, 69, 83]
+2019-04-20 18:51:15,568 [INFO] leaf-node-counts = [109, 94, 69, 83]
+2019-04-20 18:51:15,569 [INFO] eval
+2019-04-20 18:51:15,671 [INFO] eval-acc=0.693
+2019-04-20 18:51:15,671 [INFO] fold 1
+2019-04-20 18:51:15,674 [INFO] train
+2019-04-20 18:51:15,675 [INFO] n-classes=150
+2019-04-20 18:51:15,787 [INFO] depths = [81, 74, 93, 73]
+2019-04-20 18:51:15,791 [INFO] leaf-node-counts = [81, 74, 93, 73]
+2019-04-20 18:51:15,791 [INFO] eval
+2019-04-20 18:51:15,893 [INFO] eval-acc=0.620
+2019-04-20 18:51:15,893 [INFO] fold 2
+2019-04-20 18:51:15,894 [INFO] train
+2019-04-20 18:51:15,895 [INFO] n-classes=150
+2019-04-20 18:51:16,004 [INFO] depths = [73, 85, 90, 95]
+2019-04-20 18:51:16,012 [INFO] leaf-node-counts = [73, 85, 90, 95]
+2019-04-20 18:51:16,012 [INFO] eval
+2019-04-20 18:51:16,115 [INFO] eval-acc=0.660
+2019-04-20 18:51:16,115 [INFO] fold 3
+2019-04-20 18:51:16,118 [INFO] train
+2019-04-20 18:51:16,119 [INFO] n-classes=150
+2019-04-20 18:51:16,232 [INFO] depths = [86, 108, 63, 100]
+2019-04-20 18:51:16,238 [INFO] leaf-node-counts = [86, 108, 63, 100]
+2019-04-20 18:51:16,238 [INFO] eval
+2019-04-20 18:51:16,340 [INFO] eval-acc=0.660
+2019-04-20 18:51:16,340 [INFO] fold 4
+2019-04-20 18:51:16,342 [INFO] train
+2019-04-20 18:51:16,342 [INFO] n-classes=150
+2019-04-20 18:51:16,452 [INFO] depths = [75, 86, 85, 84]
+2019-04-20 18:51:16,459 [INFO] leaf-node-counts = [75, 86, 85, 84]
+2019-04-20 18:51:16,459 [INFO] eval
+2019-04-20 18:51:16,562 [INFO] eval-acc=0.733
+2019-04-20 18:51:16,562 [INFO] fold 5
+2019-04-20 18:51:16,565 [INFO] train
+2019-04-20 18:51:16,565 [INFO] n-classes=150
+2019-04-20 18:51:16,679 [INFO] depths = [98, 76, 100, 105]
+2019-04-20 18:51:16,683 [INFO] leaf-node-counts = [98, 76, 100, 105]
+2019-04-20 18:51:16,683 [INFO] eval
+2019-04-20 18:51:16,785 [INFO] eval-acc=0.653
+2019-04-20 18:51:16,785 [INFO] fold 6
+2019-04-20 18:51:16,787 [INFO] train
+2019-04-20 18:51:16,788 [INFO] n-classes=150
+2019-04-20 18:51:16,899 [INFO] depths = [87, 93, 73, 95]
+2019-04-20 18:51:16,907 [INFO] leaf-node-counts = [87, 93, 73, 95]
+2019-04-20 18:51:16,908 [INFO] eval
+2019-04-20 18:51:17,011 [INFO] eval-acc=0.647
+2019-04-20 18:51:17,011 [INFO] fold 7
+2019-04-20 18:51:17,014 [INFO] train
+2019-04-20 18:51:17,015 [INFO] n-classes=150
+2019-04-20 18:51:17,128 [INFO] depths = [70, 95, 74, 104]
+2019-04-20 18:51:17,138 [INFO] leaf-node-counts = [70, 95, 74, 104]
+2019-04-20 18:51:17,138 [INFO] eval
+2019-04-20 18:51:17,242 [INFO] eval-acc=0.740
+2019-04-20 18:51:17,242 [INFO] fold 8
+2019-04-20 18:51:17,243 [INFO] train
+2019-04-20 18:51:17,244 [INFO] n-classes=150
+2019-04-20 18:51:17,353 [INFO] depths = [109, 76, 81, 82]
+2019-04-20 18:51:17,360 [INFO] leaf-node-counts = [109, 76, 81, 82]
+2019-04-20 18:51:17,360 [INFO] eval
+2019-04-20 18:51:17,463 [INFO] eval-acc=0.620
+2019-04-20 18:51:17,464 [INFO] acc-mean=0.670 acc-std=0.041 acc-max=0.740
+{"metrics": {"acc_max": 0.74, "acc_mean": 0.6696296296296297, "acc_std": 0.04146825185860268}, "options": {"cutoff": 9, "json_result": true, "max_classes": 150, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 8642698, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:51:40,604 [INFO] start
+2019-04-20 18:52:44,205 [INFO] balancing data
+2019-04-20 18:52:48,528 [INFO] found 5763 eligible classes
+2019-04-20 18:52:48,528 [INFO] downsampled to 300 classes
+2019-04-20 18:52:48,538 [INFO] joining strings
+2019-04-20 18:52:48,555 [INFO] tfidf data
+2019-04-20 18:52:48,852 [INFO] language-counter=Counter({'python': 2700})
+2019-04-20 18:52:48,852 [INFO] fold 0
+2019-04-20 18:52:48,903 [INFO] train
+2019-04-20 18:52:48,903 [INFO] n-classes=300
+2019-04-20 18:52:49,011 [INFO] depths = [111, 124, 92, 128]
+2019-04-20 18:52:49,027 [INFO] leaf-node-counts = [111, 124, 92, 128]
+2019-04-20 18:52:49,027 [INFO] eval
+2019-04-20 18:52:49,130 [INFO] eval-acc=0.650
+2019-04-20 18:52:49,130 [INFO] fold 1
+2019-04-20 18:52:49,134 [INFO] train
+2019-04-20 18:52:49,135 [INFO] n-classes=300
+2019-04-20 18:52:49,249 [INFO] depths = [144, 144, 130, 116]
+2019-04-20 18:52:49,258 [INFO] leaf-node-counts = [144, 144, 130, 116]
+2019-04-20 18:52:49,258 [INFO] eval
+2019-04-20 18:52:49,361 [INFO] eval-acc=0.653
+2019-04-20 18:52:49,361 [INFO] fold 2
+2019-04-20 18:52:49,364 [INFO] train
+2019-04-20 18:52:49,365 [INFO] n-classes=300
+2019-04-20 18:52:49,478 [INFO] depths = [168, 131, 92, 133]
+2019-04-20 18:52:49,490 [INFO] leaf-node-counts = [168, 131, 92, 133]
+2019-04-20 18:52:49,491 [INFO] eval
+2019-04-20 18:52:49,593 [INFO] eval-acc=0.640
+2019-04-20 18:52:49,593 [INFO] fold 3
+2019-04-20 18:52:49,595 [INFO] train
+2019-04-20 18:52:49,596 [INFO] n-classes=300
+2019-04-20 18:52:49,707 [INFO] depths = [126, 122, 85, 141]
+2019-04-20 18:52:49,722 [INFO] leaf-node-counts = [126, 122, 85, 141]
+2019-04-20 18:52:49,722 [INFO] eval
+2019-04-20 18:52:49,825 [INFO] eval-acc=0.653
+2019-04-20 18:52:49,825 [INFO] fold 4
+2019-04-20 18:52:49,828 [INFO] train
+2019-04-20 18:52:49,828 [INFO] n-classes=300
+2019-04-20 18:52:49,938 [INFO] depths = [129, 132, 107, 123]
+2019-04-20 18:52:49,947 [INFO] leaf-node-counts = [129, 132, 107, 123]
+2019-04-20 18:52:49,947 [INFO] eval
+2019-04-20 18:52:50,050 [INFO] eval-acc=0.663
+2019-04-20 18:52:50,051 [INFO] fold 5
+2019-04-20 18:52:50,053 [INFO] train
+2019-04-20 18:52:50,053 [INFO] n-classes=300
+2019-04-20 18:52:50,164 [INFO] depths = [85, 147, 128, 76]
+2019-04-20 18:52:50,177 [INFO] leaf-node-counts = [85, 147, 128, 76]
+2019-04-20 18:52:50,177 [INFO] eval
+2019-04-20 18:52:50,280 [INFO] eval-acc=0.663
+2019-04-20 18:52:50,280 [INFO] fold 6
+2019-04-20 18:52:50,284 [INFO] train
+2019-04-20 18:52:50,284 [INFO] n-classes=300
+2019-04-20 18:52:50,397 [INFO] depths = [122, 169, 129, 126]
+2019-04-20 18:52:50,406 [INFO] leaf-node-counts = [122, 169, 129, 126]
+2019-04-20 18:52:50,406 [INFO] eval
+2019-04-20 18:52:50,510 [INFO] eval-acc=0.670
+2019-04-20 18:52:50,510 [INFO] fold 7
+2019-04-20 18:52:50,513 [INFO] train
+2019-04-20 18:52:50,514 [INFO] n-classes=300
+2019-04-20 18:52:50,628 [INFO] depths = [142, 162, 134, 83]
+2019-04-20 18:52:50,643 [INFO] leaf-node-counts = [142, 162, 134, 83]
+2019-04-20 18:52:50,643 [INFO] eval
+2019-04-20 18:52:50,746 [INFO] eval-acc=0.593
+2019-04-20 18:52:50,746 [INFO] fold 8
+2019-04-20 18:52:50,750 [INFO] train
+2019-04-20 18:52:50,751 [INFO] n-classes=300
+2019-04-20 18:52:50,864 [INFO] depths = [130, 122, 76, 151]
+2019-04-20 18:52:50,878 [INFO] leaf-node-counts = [130, 122, 76, 151]
+2019-04-20 18:52:50,878 [INFO] eval
+2019-04-20 18:52:50,981 [INFO] eval-acc=0.650
+2019-04-20 18:52:50,981 [INFO] acc-mean=0.649 acc-std=0.021 acc-max=0.670
+{"metrics": {"acc_max": 0.67, "acc_mean": 0.6485185185185185, "acc_std": 0.021263259399121947}, "options": {"cutoff": 9, "json_result": true, "max_classes": 300, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 4667451, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:53:14,094 [INFO] start
+2019-04-20 18:54:17,130 [INFO] balancing data
+2019-04-20 18:54:21,468 [INFO] found 5763 eligible classes
+2019-04-20 18:54:21,468 [INFO] downsampled to 500 classes
+2019-04-20 18:54:21,478 [INFO] joining strings
+2019-04-20 18:54:21,506 [INFO] tfidf data
+2019-04-20 18:54:21,972 [INFO] language-counter=Counter({'python': 4500})
+2019-04-20 18:54:21,973 [INFO] fold 0
+2019-04-20 18:54:22,065 [INFO] train
+2019-04-20 18:54:22,066 [INFO] n-classes=500
+2019-04-20 18:54:22,275 [INFO] depths = [146, 188, 145, 151]
+2019-04-20 18:54:22,294 [INFO] leaf-node-counts = [146, 188, 145, 151]
+2019-04-20 18:54:22,294 [INFO] eval
+2019-04-20 18:54:22,397 [INFO] eval-acc=0.628
+2019-04-20 18:54:22,397 [INFO] fold 1
+2019-04-20 18:54:22,401 [INFO] train
+2019-04-20 18:54:22,403 [INFO] n-classes=500
+2019-04-20 18:54:22,620 [INFO] depths = [148, 175, 211, 253]
+2019-04-20 18:54:22,637 [INFO] leaf-node-counts = [148, 175, 211, 253]
+2019-04-20 18:54:22,637 [INFO] eval
+2019-04-20 18:54:22,740 [INFO] eval-acc=0.666
+2019-04-20 18:54:22,741 [INFO] fold 2
+2019-04-20 18:54:22,745 [INFO] train
+2019-04-20 18:54:22,747 [INFO] n-classes=500
+2019-04-20 18:54:22,961 [INFO] depths = [151, 224, 106, 143]
+2019-04-20 18:54:22,980 [INFO] leaf-node-counts = [151, 224, 106, 143]
+2019-04-20 18:54:22,980 [INFO] eval
+2019-04-20 18:54:23,083 [INFO] eval-acc=0.630
+2019-04-20 18:54:23,083 [INFO] fold 3
+2019-04-20 18:54:23,088 [INFO] train
+2019-04-20 18:54:23,089 [INFO] n-classes=500
+2019-04-20 18:54:23,305 [INFO] depths = [182, 192, 200, 189]
+2019-04-20 18:54:23,322 [INFO] leaf-node-counts = [182, 192, 200, 189]
+2019-04-20 18:54:23,322 [INFO] eval
+2019-04-20 18:54:23,425 [INFO] eval-acc=0.606
+2019-04-20 18:54:23,425 [INFO] fold 4
+2019-04-20 18:54:23,429 [INFO] train
+2019-04-20 18:54:23,430 [INFO] n-classes=500
+2019-04-20 18:54:23,647 [INFO] depths = [150, 146, 153, 166]
+2019-04-20 18:54:23,665 [INFO] leaf-node-counts = [150, 146, 153, 166]
+2019-04-20 18:54:23,665 [INFO] eval
+2019-04-20 18:54:23,768 [INFO] eval-acc=0.652
+2019-04-20 18:54:23,768 [INFO] fold 5
+2019-04-20 18:54:23,772 [INFO] train
+2019-04-20 18:54:23,772 [INFO] n-classes=500
+2019-04-20 18:54:23,988 [INFO] depths = [235, 170, 159, 226]
+2019-04-20 18:54:24,006 [INFO] leaf-node-counts = [235, 170, 159, 226]
+2019-04-20 18:54:24,006 [INFO] eval
+2019-04-20 18:54:24,110 [INFO] eval-acc=0.640
+2019-04-20 18:54:24,110 [INFO] fold 6
+2019-04-20 18:54:24,114 [INFO] train
+2019-04-20 18:54:24,115 [INFO] n-classes=500
+2019-04-20 18:54:24,332 [INFO] depths = [197, 179, 132, 188]
+2019-04-20 18:54:24,352 [INFO] leaf-node-counts = [197, 179, 132, 188]
+2019-04-20 18:54:24,352 [INFO] eval
+2019-04-20 18:54:24,456 [INFO] eval-acc=0.616
+2019-04-20 18:54:24,456 [INFO] fold 7
+2019-04-20 18:54:24,460 [INFO] train
+2019-04-20 18:54:24,461 [INFO] n-classes=500
+2019-04-20 18:54:24,676 [INFO] depths = [201, 150, 115, 185]
+2019-04-20 18:54:24,695 [INFO] leaf-node-counts = [201, 150, 115, 185]
+2019-04-20 18:54:24,695 [INFO] eval
+2019-04-20 18:54:24,798 [INFO] eval-acc=0.624
+2019-04-20 18:54:24,798 [INFO] fold 8
+2019-04-20 18:54:24,801 [INFO] train
+2019-04-20 18:54:24,802 [INFO] n-classes=500
+2019-04-20 18:54:25,018 [INFO] depths = [209, 155, 188, 260]
+2019-04-20 18:54:25,037 [INFO] leaf-node-counts = [209, 155, 188, 260]
+2019-04-20 18:54:25,037 [INFO] eval
+2019-04-20 18:54:25,141 [INFO] eval-acc=0.610
+2019-04-20 18:54:25,146 [INFO] acc-mean=0.630 acc-std=0.019 acc-max=0.666
+{"metrics": {"acc_max": 0.666, "acc_mean": 0.6302222222222222, "acc_std": 0.01853391952177161}, "options": {"cutoff": 9, "json_result": true, "max_classes": 500, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 1048694, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:54:48,282 [INFO] start
+2019-04-20 18:55:52,736 [INFO] balancing data
+2019-04-20 18:55:57,057 [INFO] found 5763 eligible classes
+2019-04-20 18:55:57,058 [INFO] downsampled to 1000 classes
+2019-04-20 18:55:57,070 [INFO] joining strings
+2019-04-20 18:55:57,126 [INFO] tfidf data
+2019-04-20 18:55:58,032 [INFO] language-counter=Counter({'python': 9000})
+2019-04-20 18:55:58,032 [INFO] fold 0
+2019-04-20 18:55:58,256 [INFO] train
+2019-04-20 18:55:58,257 [INFO] n-classes=1000
+2019-04-20 18:55:58,870 [INFO] depths = [270, 313, 367, 223]
+2019-04-20 18:55:58,899 [INFO] leaf-node-counts = [270, 313, 367, 223]
+2019-04-20 18:55:58,899 [INFO] eval
+2019-04-20 18:55:59,005 [INFO] eval-acc=0.621
+2019-04-20 18:55:59,006 [INFO] fold 1
+2019-04-20 18:55:59,015 [INFO] train
+2019-04-20 18:55:59,017 [INFO] n-classes=1000
+2019-04-20 18:55:59,740 [INFO] depths = [411, 259, 381, 241]
+2019-04-20 18:55:59,766 [INFO] leaf-node-counts = [411, 259, 381, 241]
+2019-04-20 18:55:59,766 [INFO] eval
+2019-04-20 18:55:59,872 [INFO] eval-acc=0.585
+2019-04-20 18:55:59,872 [INFO] fold 2
+2019-04-20 18:55:59,881 [INFO] train
+2019-04-20 18:55:59,884 [INFO] n-classes=1000
+2019-04-20 18:56:00,513 [INFO] depths = [276, 255, 288, 304]
+2019-04-20 18:56:00,537 [INFO] leaf-node-counts = [276, 255, 288, 304]
+2019-04-20 18:56:00,538 [INFO] eval
+2019-04-20 18:56:00,647 [INFO] eval-acc=0.612
+2019-04-20 18:56:00,647 [INFO] fold 3
+2019-04-20 18:56:00,658 [INFO] train
+2019-04-20 18:56:00,659 [INFO] n-classes=1000
+2019-04-20 18:56:01,387 [INFO] depths = [284, 308, 313, 317]
+2019-04-20 18:56:01,410 [INFO] leaf-node-counts = [284, 308, 313, 317]
+2019-04-20 18:56:01,411 [INFO] eval
+2019-04-20 18:56:01,517 [INFO] eval-acc=0.618
+2019-04-20 18:56:01,517 [INFO] fold 4
+2019-04-20 18:56:01,523 [INFO] train
+2019-04-20 18:56:01,524 [INFO] n-classes=1000
+2019-04-20 18:56:02,151 [INFO] depths = [342, 272, 269, 268]
+2019-04-20 18:56:02,174 [INFO] leaf-node-counts = [342, 272, 269, 268]
+2019-04-20 18:56:02,174 [INFO] eval
+2019-04-20 18:56:02,283 [INFO] eval-acc=0.625
+2019-04-20 18:56:02,283 [INFO] fold 5
+2019-04-20 18:56:02,291 [INFO] train
+2019-04-20 18:56:02,292 [INFO] n-classes=1000
+2019-04-20 18:56:02,919 [INFO] depths = [277, 256, 260, 256]
+2019-04-20 18:56:02,941 [INFO] leaf-node-counts = [277, 256, 260, 256]
+2019-04-20 18:56:02,941 [INFO] eval
+2019-04-20 18:56:03,048 [INFO] eval-acc=0.639
+2019-04-20 18:56:03,048 [INFO] fold 6
+2019-04-20 18:56:03,058 [INFO] train
+2019-04-20 18:56:03,059 [INFO] n-classes=1000
+2019-04-20 18:56:03,787 [INFO] depths = [327, 245, 344, 286]
+2019-04-20 18:56:03,813 [INFO] leaf-node-counts = [327, 245, 344, 286]
+2019-04-20 18:56:03,813 [INFO] eval
+2019-04-20 18:56:03,922 [INFO] eval-acc=0.610
+2019-04-20 18:56:03,922 [INFO] fold 7
+2019-04-20 18:56:03,931 [INFO] train
+2019-04-20 18:56:03,932 [INFO] n-classes=1000
+2019-04-20 18:56:04,555 [INFO] depths = [298, 265, 311, 230]
+2019-04-20 18:56:04,580 [INFO] leaf-node-counts = [298, 265, 311, 230]
+2019-04-20 18:56:04,581 [INFO] eval
+2019-04-20 18:56:04,689 [INFO] eval-acc=0.623
+2019-04-20 18:56:04,690 [INFO] fold 8
+2019-04-20 18:56:04,701 [INFO] train
+2019-04-20 18:56:04,702 [INFO] n-classes=1000
+2019-04-20 18:56:05,330 [INFO] depths = [303, 291, 383, 241]
+2019-04-20 18:56:05,353 [INFO] leaf-node-counts = [303, 291, 383, 241]
+2019-04-20 18:56:05,353 [INFO] eval
+2019-04-20 18:56:05,463 [INFO] eval-acc=0.634
+2019-04-20 18:56:05,476 [INFO] acc-mean=0.619 acc-std=0.015 acc-max=0.639
+{"metrics": {"acc_max": 0.639, "acc_mean": 0.6185555555555555, "acc_std": 0.014780701465169693}, "options": {"cutoff": 9, "json_result": true, "max_classes": 1000, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 1278007, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:56:28,297 [INFO] start
+2019-04-20 18:57:31,476 [INFO] balancing data
+2019-04-20 18:57:35,874 [INFO] found 5763 eligible classes
+2019-04-20 18:57:35,875 [INFO] downsampled to 1500 classes
+2019-04-20 18:57:35,890 [INFO] joining strings
+2019-04-20 18:57:35,972 [INFO] tfidf data
+2019-04-20 18:57:37,319 [INFO] language-counter=Counter({'python': 13500})
+2019-04-20 18:57:37,319 [INFO] fold 0
+2019-04-20 18:57:37,708 [INFO] train
+2019-04-20 18:57:37,709 [INFO] n-classes=1500
+2019-04-20 18:57:39,226 [INFO] depths = [335, 341, 408, 446]
+2019-04-20 18:57:39,269 [INFO] leaf-node-counts = [335, 341, 408, 446]
+2019-04-20 18:57:39,269 [INFO] eval
+2019-04-20 18:57:39,385 [INFO] eval-acc=0.625
+2019-04-20 18:57:39,385 [INFO] fold 1
+2019-04-20 18:57:39,393 [INFO] train
+2019-04-20 18:57:39,395 [INFO] n-classes=1500
+2019-04-20 18:57:41,138 [INFO] depths = [338, 464, 387, 470]
+2019-04-20 18:57:41,174 [INFO] leaf-node-counts = [338, 464, 387, 470]
+2019-04-20 18:57:41,174 [INFO] eval
+2019-04-20 18:57:41,289 [INFO] eval-acc=0.609
+2019-04-20 18:57:41,289 [INFO] fold 2
+2019-04-20 18:57:41,299 [INFO] train
+2019-04-20 18:57:41,301 [INFO] n-classes=1500
+2019-04-20 18:57:42,741 [INFO] depths = [378, 361, 373, 408]
+2019-04-20 18:57:42,778 [INFO] leaf-node-counts = [378, 361, 373, 408]
+2019-04-20 18:57:42,778 [INFO] eval
+2019-04-20 18:57:42,893 [INFO] eval-acc=0.618
+2019-04-20 18:57:42,894 [INFO] fold 3
+2019-04-20 18:57:42,902 [INFO] train
+2019-04-20 18:57:42,903 [INFO] n-classes=1500
+2019-04-20 18:57:44,241 [INFO] depths = [373, 324, 394, 290]
+2019-04-20 18:57:44,278 [INFO] leaf-node-counts = [373, 324, 394, 290]
+2019-04-20 18:57:44,278 [INFO] eval
+2019-04-20 18:57:44,394 [INFO] eval-acc=0.610
+2019-04-20 18:57:44,394 [INFO] fold 4
+2019-04-20 18:57:44,403 [INFO] train
+2019-04-20 18:57:44,405 [INFO] n-classes=1500
+2019-04-20 18:57:45,743 [INFO] depths = [299, 342, 420, 315]
+2019-04-20 18:57:45,779 [INFO] leaf-node-counts = [299, 342, 420, 315]
+2019-04-20 18:57:45,779 [INFO] eval
+2019-04-20 18:57:45,894 [INFO] eval-acc=0.605
+2019-04-20 18:57:45,894 [INFO] fold 5
+2019-04-20 18:57:45,904 [INFO] train
+2019-04-20 18:57:45,906 [INFO] n-classes=1500
+2019-04-20 18:57:47,548 [INFO] depths = [391, 440, 475, 295]
+2019-04-20 18:57:47,585 [INFO] leaf-node-counts = [391, 440, 475, 295]
+2019-04-20 18:57:47,585 [INFO] eval
+2019-04-20 18:57:47,699 [INFO] eval-acc=0.605
+2019-04-20 18:57:47,699 [INFO] fold 6
+2019-04-20 18:57:47,710 [INFO] train
+2019-04-20 18:57:47,712 [INFO] n-classes=1500
+2019-04-20 18:57:49,254 [INFO] depths = [344, 319, 407, 291]
+2019-04-20 18:57:49,290 [INFO] leaf-node-counts = [344, 319, 407, 291]
+2019-04-20 18:57:49,290 [INFO] eval
+2019-04-20 18:57:49,405 [INFO] eval-acc=0.631
+2019-04-20 18:57:49,405 [INFO] fold 7
+2019-04-20 18:57:49,415 [INFO] train
+2019-04-20 18:57:49,417 [INFO] n-classes=1500
+2019-04-20 18:57:51,058 [INFO] depths = [502, 319, 490, 362]
+2019-04-20 18:57:51,094 [INFO] leaf-node-counts = [502, 319, 490, 362]
+2019-04-20 18:57:51,094 [INFO] eval
+2019-04-20 18:57:51,210 [INFO] eval-acc=0.599
+2019-04-20 18:57:51,210 [INFO] fold 8
+2019-04-20 18:57:51,220 [INFO] train
+2019-04-20 18:57:51,222 [INFO] n-classes=1500
+2019-04-20 18:57:52,862 [INFO] depths = [433, 408, 328, 339]
+2019-04-20 18:57:52,898 [INFO] leaf-node-counts = [433, 408, 328, 339]
+2019-04-20 18:57:52,898 [INFO] eval
+2019-04-20 18:57:53,014 [INFO] eval-acc=0.593
+2019-04-20 18:57:53,033 [INFO] acc-mean=0.611 acc-std=0.011 acc-max=0.631
+{"metrics": {"acc_max": 0.6313333333333333, "acc_mean": 0.6105925925925926, "acc_std": 0.011424230020008714}, "options": {"cutoff": 9, "json_result": true, "max_classes": 1500, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 1455608, "show_progress": false, "verbose": false}}
+/home/dexter/anaconda2/envs/diora/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+2019-04-20 18:58:15,970 [INFO] start
+2019-04-20 18:59:20,585 [INFO] balancing data
+2019-04-20 18:59:24,925 [INFO] found 5763 eligible classes
+2019-04-20 18:59:24,925 [INFO] downsampled to 2000 classes
+2019-04-20 18:59:24,943 [INFO] joining strings
+2019-04-20 18:59:25,052 [INFO] tfidf data
+2019-04-20 18:59:26,938 [INFO] language-counter=Counter({'python': 18000})
+2019-04-20 18:59:26,938 [INFO] fold 0
+2019-04-20 18:59:27,538 [INFO] train
+2019-04-20 18:59:27,540 [INFO] n-classes=2000
+2019-04-20 18:59:30,464 [INFO] depths = [412, 520, 638, 435]
+2019-04-20 18:59:30,523 [INFO] leaf-node-counts = [412, 520, 638, 435]
+2019-04-20 18:59:30,523 [INFO] eval
+2019-04-20 18:59:30,644 [INFO] eval-acc=0.609
+2019-04-20 18:59:30,644 [INFO] fold 1
+2019-04-20 18:59:30,654 [INFO] train
+2019-04-20 18:59:30,656 [INFO] n-classes=2000
+2019-04-20 18:59:33,010 [INFO] depths = [302, 496, 398, 481]
+2019-04-20 18:59:33,055 [INFO] leaf-node-counts = [302, 496, 398, 481]
+2019-04-20 18:59:33,055 [INFO] eval
+2019-04-20 18:59:33,176 [INFO] eval-acc=0.609
+2019-04-20 18:59:33,176 [INFO] fold 2
+2019-04-20 18:59:33,187 [INFO] train
+2019-04-20 18:59:33,189 [INFO] n-classes=2000
+2019-04-20 18:59:36,046 [INFO] depths = [393, 534, 374, 472]
+2019-04-20 18:59:36,094 [INFO] leaf-node-counts = [393, 534, 374, 472]
+2019-04-20 18:59:36,094 [INFO] eval
+2019-04-20 18:59:36,217 [INFO] eval-acc=0.605
+2019-04-20 18:59:36,218 [INFO] fold 3
+2019-04-20 18:59:36,229 [INFO] train
+2019-04-20 18:59:36,232 [INFO] n-classes=2000
+2019-04-20 18:59:39,092 [INFO] depths = [418, 514, 441, 590]
+2019-04-20 18:59:39,141 [INFO] leaf-node-counts = [418, 514, 441, 590]
+2019-04-20 18:59:39,141 [INFO] eval
+2019-04-20 18:59:39,262 [INFO] eval-acc=0.600
+2019-04-20 18:59:39,263 [INFO] fold 4
+2019-04-20 18:59:39,272 [INFO] train
+2019-04-20 18:59:39,274 [INFO] n-classes=2000
+2019-04-20 18:59:42,133 [INFO] depths = [462, 479, 460, 393]
+2019-04-20 18:59:42,181 [INFO] leaf-node-counts = [462, 479, 460, 393]
+2019-04-20 18:59:42,181 [INFO] eval
+2019-04-20 18:59:42,304 [INFO] eval-acc=0.602
+2019-04-20 18:59:42,304 [INFO] fold 5
+2019-04-20 18:59:42,317 [INFO] train
+2019-04-20 18:59:42,319 [INFO] n-classes=2000
+2019-04-20 18:59:44,877 [INFO] depths = [353, 528, 512, 403]
+2019-04-20 18:59:44,926 [INFO] leaf-node-counts = [353, 528, 512, 403]
+2019-04-20 18:59:44,926 [INFO] eval
+2019-04-20 18:59:45,051 [INFO] eval-acc=0.610
+2019-04-20 18:59:45,051 [INFO] fold 6
+2019-04-20 18:59:45,063 [INFO] train
+2019-04-20 18:59:45,065 [INFO] n-classes=2000
+2019-04-20 18:59:47,624 [INFO] depths = [434, 408, 318, 413]
+2019-04-20 18:59:47,673 [INFO] leaf-node-counts = [434, 408, 318, 413]
+2019-04-20 18:59:47,673 [INFO] eval
+2019-04-20 18:59:47,796 [INFO] eval-acc=0.610
+2019-04-20 18:59:47,796 [INFO] fold 7
+2019-04-20 18:59:47,809 [INFO] train
+2019-04-20 18:59:47,811 [INFO] n-classes=2000
+2019-04-20 18:59:50,570 [INFO] depths = [407, 536, 522, 455]
+2019-04-20 18:59:50,619 [INFO] leaf-node-counts = [407, 536, 522, 455]
+2019-04-20 18:59:50,619 [INFO] eval
+2019-04-20 18:59:50,741 [INFO] eval-acc=0.617
+2019-04-20 18:59:50,741 [INFO] fold 8
+2019-04-20 18:59:50,753 [INFO] train
+2019-04-20 18:59:50,755 [INFO] n-classes=2000
+2019-04-20 18:59:53,315 [INFO] depths = [457, 424, 455, 420]
+2019-04-20 18:59:53,363 [INFO] leaf-node-counts = [457, 424, 455, 420]
+2019-04-20 18:59:53,363 [INFO] eval
+2019-04-20 18:59:53,489 [INFO] eval-acc=0.601
+2019-04-20 18:59:53,516 [INFO] acc-mean=0.607 acc-std=0.005 acc-max=0.617
+{"metrics": {"acc_max": 0.6165, "acc_mean": 0.6066666666666667, "acc_std": 0.005082650227325649}, "options": {"cutoff": 9, "json_result": true, "max_classes": 2000, "max_depth": null, "max_features": null, "max_leaf_nodes_scale": null, "n_estimators": 4, "n_jobs": -1, "name": null, "path_c": null, "path_cpp": null, "path_py": "/home/dexter/Downloads/gcj-py-all.jsonl", "preset_c": "none", "preset_cpp": "none", "preset_py": "none", "seed": 4359233, "show_progress": false, "verbose": false}}

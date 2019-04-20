@@ -1,10 +1,10 @@
 CODE="$HOME/School/amir-security/code-authorship"
 RESULTS="$HOME/School/amir-security/code-authorship/experiments/results"
-RESULTS_PATH="${RESULTS}/largescale_4.txt"
+RESULTS_PATH="${RESULTS}/largescale_10.txt"
 
 cd $CODE
 
-N_ESTIMATORS="4"
+N_ESTIMATORS="10"
 MAXCLASSES_LST=(50 100 150 300 500 1000 1500 2000)
 
 echo begin > $RESULTS_PATH
