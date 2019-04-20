@@ -36,6 +36,8 @@ import sys
 
 from collections import Counter
 
+import numpy as np
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold
 
@@ -44,11 +46,38 @@ from codeauthorship.dataset.manager import *
 from codeauthorship.utils.logging import *
 
 
+def get_leaf_node_count(estimator):
+    n_nodes = estimator.tree_.node_count
+    children_left = estimator.tree_.children_left
+    children_right = estimator.tree_.children_right
+    is_leaves = np.zeros(shape=n_nodes, dtype=bool)
+
+    stack = [(0, -1)]  # seed is the root node id and its parent depth
+    while len(stack) > 0:
+        node_id, parent_depth = stack.pop()
+
+        # If we have a test node
+        if (children_left[node_id] != children_right[node_id]):
+            stack.append((children_left[node_id], parent_depth + 1))
+            stack.append((children_right[node_id], parent_depth + 1))
+        else:
+            is_leaves[node_id] = True
+
+    return is_leaves.sum()
+
+
 def run_train(options, X, Y):
-    model = RandomForestClassifier(
+    logger = get_logger()
+    n_classes = len(set(Y))
+    logger.info('n-classes={}'.format(n_classes))
+    max_leaf_nodes = None
+    if options.max_leaf_nodes_scale is not None:
+        max_leaf_nodes = n_classes * max_leaf_nodes_scale
+    model = RandomForestClassifier(verbose=3 if options.verbose else 0,
         n_estimators=options.n_estimators,
         max_depth=options.max_depth,
         n_jobs=options.n_jobs,
+        max_leaf_nodes=max_leaf_nodes,
         random_state=0,
         )
     model.fit(X, Y)
@@ -92,6 +121,9 @@ def run_cv(options, X, Y):
         depths = [a.tree_.max_depth for a in model.estimators_]
         logger.info('depths = {}'.format(depths))
 
+        leaf_node_counts = [get_leaf_node_count(a) for a in model.estimators_]
+        logger.info('leaf-node-counts = {}'.format(depths))
+
         # Eval
         logger.info('eval')
         eval_results = run_evaluation(model, testX, testY)
@@ -131,9 +163,11 @@ def get_argument_parser():
     # settings
     parser.add_argument('--max_features', default=None, type=int)
     # rfc
+    parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--n_jobs', default=-1, type=int)
     parser.add_argument('--n_estimators', default=100, type=int)
     parser.add_argument('--max_depth', default=None, type=int)
+    parser.add_argument('--max_leaf_nodes_scale', default=None, type=int)
     
     return parser
     
