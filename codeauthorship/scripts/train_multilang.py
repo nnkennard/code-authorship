@@ -150,6 +150,8 @@ def get_argument_parser():
     parser = argparse.ArgumentParser()
     # debug
     parser.add_argument('--json_result', action='store_true')
+    parser.add_argument('--show_progress', action='store_true')
+    parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--name', default=None, type=str)
     # args
     parser.add_argument('--path_py', default=None, type=str)
@@ -164,7 +166,6 @@ def get_argument_parser():
     parser.add_argument('--max_features', default=None, type=int)
     parser.add_argument('--max_classes', default=None, type=int)
     # rfc
-    parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--n_jobs', default=-1, type=int)
     parser.add_argument('--n_estimators', default=100, type=int)
     parser.add_argument('--max_depth', default=None, type=int)

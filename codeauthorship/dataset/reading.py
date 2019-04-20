@@ -18,6 +18,8 @@ def indexify(value2idx, lst):
 class DatasetReader(object):
     def __init__(self, options):
         super(DatasetReader, self).__init__()
+        self.options = options
+
         self.path_py = options.path_py
         self.path_c = options.path_c
         self.path_cpp = options.path_cpp
@@ -29,7 +31,7 @@ class DatasetReader(object):
     def readfile(self, path):
         def func():
             with open(path) as f:
-                for line in tqdm(f, desc='read'):
+                for line in tqdm(f, desc='read', disable=not self.options.show_progress):
                     yield json.loads(line)
         return list(func())
 
@@ -114,7 +116,7 @@ class Dataset(object):
         # Metadata. Information about the dataset.
         metadata = {}
         
-        for i, ex in tqdm(enumerate(records), desc='build'):
+        for i, ex in tqdm(enumerate(records), desc='build', disable=not self.options.show_progress):
             tokens = ex['tokens']
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.
             seq_types.append([x['type'] for x in tokens])
