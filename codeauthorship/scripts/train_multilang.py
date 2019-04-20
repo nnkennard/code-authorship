@@ -221,6 +221,7 @@ def run(options):
     if options.json_result:
         json_result = {}
         json_result['options'] = options.__dict__
+        json_result['metrics'] = {}
         json_result['metrics']['acc_mean'] = acc_mean
         json_result['metrics']['acc_std'] = acc_std
         json_result['metrics']['acc_max'] = acc_max
