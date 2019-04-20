@@ -160,8 +160,9 @@ def get_argument_parser():
     parser.add_argument('--preset_cpp', default='none', choices=('none', 'small', 'medium'))
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
-    # settings
+    # data
     parser.add_argument('--max_features', default=None, type=int)
+    parser.add_argument('--max_classes', default=None, type=int)
     # rfc
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--n_jobs', default=-1, type=int)
@@ -216,6 +217,14 @@ def run(options):
 
     logger.info('acc-mean={:.3f} acc-std={:.3f} acc-max={:.3f}'.format(
         acc_mean, acc_std, acc_max))
+
+    if options.json_result:
+        json_result = {}
+        json_result['options'] = options.__dict__
+        json_result['metrics']['acc_mean'] = acc_mean
+        json_result['metrics']['acc_std'] = acc_std
+        json_result['metrics']['acc_max'] = acc_max
+        print(json.dumps(json_result, sort_keys=True))
 
 
 if __name__ == '__main__':

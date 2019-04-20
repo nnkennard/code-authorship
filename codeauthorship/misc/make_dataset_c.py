@@ -93,15 +93,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv', type=str)
     parser.add_argument('--path_out', default='~/Downloads/gcj.jsonl', type=str)
-    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'all'))
+    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'table3', 'all'))
     options = parser.parse_args()
 
     if options.preset == 'small':
         options.path_in = '~/Downloads/gcj2008.csv'
         options.path_out = '~/Downloads/gcj-c-small.jsonl'
     elif options.preset == 'medium':
-        options.path_in = '~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv'
+        options.path_in = '~/Downloads/gcj2017.csv'
         options.path_out = '~/Downloads/gcj-c-medium.jsonl'
+    elif options.preset == 'table3':
+        options.path_in = '~/Downloads/gcj2015.csv,~/Downloads/gcj2016.csv'
+        options.path_out = '~/Downloads/gcj-py-table3.jsonl'
     elif options.preset == 'all':
         options.path_in = ','.join(['~/Downloads/gcj20{:02}.csv'.format(i) for i in range(8, 18)])
         options.path_out = '~/Downloads/gcj-c-all.jsonl'
