@@ -57,31 +57,29 @@ def convert_file(path_in, path_out):
             tempfname = tempf.name
 
             # Tokenize code.
-            # try:
-            # tokenizer = tokenize.tokenize(open(tempfname, 'rb').readline)
-            idx = clang.cindex.Index.create()
-            s = open(tempfname).read()
-            tu = idx.parse('tmp.cpp', args=['-std=c++11'],  
-                            unsaved_files=[('tmp.cpp', s)],  options=0)
+            try:
+                idx = clang.cindex.Index.create()
+                s = open(tempfname).read()
+                tu = idx.parse('tmp.cpp', args=['-std=c++11'],  
+                                unsaved_files=[('tmp.cpp', s)],  options=0)
 
-            tokens = []
-            for t in tu.get_tokens(extent=tu.cursor.extent):
-                token = {}
-                token['type'] = str(t.kind)
-                token['val'] = t.spelling
-                tokens.append(token)
+                tokens = []
+                for t in tu.get_tokens(extent=tu.cursor.extent):
+                    token = {}
+                    token['type'] = str(t.kind)
+                    token['val'] = t.spelling
+                    tokens.append(token)
 
-            ex = {}
-            ex['username'] = username
-            ex['tokens'] = tokens
-            ex['example_id'] = str(example_id)
+                ex = {}
+                ex['username'] = username
+                ex['tokens'] = tokens
+                ex['example_id'] = str(example_id)
 
-            f.write('{}\n'.format(json.dumps(ex)))
-            example_id += 1
-            success += 1
-            # except:
-            #     # print('Failed {}'.format(row['file']))
-            #     failed += 1
+                f.write('{}\n'.format(json.dumps(ex)))
+                example_id += 1
+                success += 1
+            except:
+                failed += 1
 
             # Cleanup.
             tempf.close()
@@ -95,7 +93,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv', type=str)
     parser.add_argument('--path_out', default='~/Downloads/gcj.jsonl', type=str)
-    parser.add_argument('--preset', default='none', choices=('small', 'medium'))
+    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'all'))
     options = parser.parse_args()
 
     if options.preset == 'small':
@@ -104,6 +102,9 @@ if __name__ == '__main__':
     elif options.preset == 'medium':
         options.path_in = '~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv'
         options.path_out = '~/Downloads/gcj-c-medium.jsonl'
+    elif options.preset == 'all':
+        options.path_in = ','.join(['~/Downloads/gcj20{:02}.csv'.format(i) for i in range(8, 18)])
+        options.path_out = '~/Downloads/gcj-c-all.jsonl'
 
     options.path_out = os.path.expanduser(options.path_out)
 

@@ -4,6 +4,8 @@ import numpy as np
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+from codeauthorship.utils.logging import *
+
 
 class DatasetManager(object):
     def __init__(self, options):
@@ -60,14 +62,22 @@ class DatasetManager(object):
         return text_data, labels, languages
 
     def build(self, raw_datasets):
+        logger = get_logger()
+
         # Configuration.
         max_features = self.options.max_features
 
         # Balance data.
+        logger.info('balancing data')
         raw_text_data, labels, languages = self.balance_data(raw_datasets)
 
-        contents = [' '.join(x) for x in raw_text_data]
+        logger.info('joining strings')
+        contents = []
+        for x in raw_text_data:
+            contents.append(' '.join(x))
+            del x
 
+        logger.info('tfidf data')
         vectorizer = TfidfVectorizer(max_features=max_features)
         X = vectorizer.fit_transform(contents)
         Y = np.array(labels)

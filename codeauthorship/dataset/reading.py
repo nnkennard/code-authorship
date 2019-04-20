@@ -2,6 +2,8 @@ import json
 
 from collections import deque
 
+from tqdm import tqdm
+
 
 def indexify(value2idx, lst):
     def func():
@@ -27,7 +29,7 @@ class DatasetReader(object):
     def readfile(self, path):
         def func():
             with open(path) as f:
-                for line in f:
+                for line in tqdm(f, desc='read'):
                     yield json.loads(line)
         return list(func())
 
@@ -112,7 +114,7 @@ class Dataset(object):
         # Metadata. Information about the dataset.
         metadata = {}
         
-        for i, ex in enumerate(records):
+        for i, ex in tqdm(enumerate(records), desc='build'):
             tokens = ex['tokens']
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.
             seq_types.append([x['type'] for x in tokens])

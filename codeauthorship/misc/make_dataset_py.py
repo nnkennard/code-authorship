@@ -91,7 +91,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv', type=str)
     parser.add_argument('--path_out', default='~/Downloads/gcj.jsonl', type=str)
-    parser.add_argument('--preset', default='none', choices=('small', 'medium'))
+    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'all'))
     options = parser.parse_args()
 
     if options.preset == 'small':
@@ -100,6 +100,9 @@ if __name__ == '__main__':
     elif options.preset == 'medium':
         options.path_in = '~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv'
         options.path_out = '~/Downloads/gcj-py-medium.jsonl'
+    elif options.preset == 'all':
+        options.path_in = ','.join(['~/Downloads/gcj20{:02}.csv'.format(i) for i in range(8, 18)])
+        options.path_out = '~/Downloads/gcj-py-all.jsonl'
 
     options.path_out = os.path.expanduser(options.path_out)
 

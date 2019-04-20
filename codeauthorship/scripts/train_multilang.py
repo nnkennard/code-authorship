@@ -41,10 +41,16 @@ from sklearn.model_selection import StratifiedKFold
 
 from codeauthorship.dataset.reading import *
 from codeauthorship.dataset.manager import *
+from codeauthorship.utils.logging import *
 
 
-def run_train(X, Y):
-    model = RandomForestClassifier(n_estimators=100, max_depth=None, n_jobs=-1, random_state=0)
+def run_train(options, X, Y):
+    model = RandomForestClassifier(
+        n_estimators=options.n_estimators,
+        max_depth=options.max_depth,
+        n_jobs=options.n_jobs,
+        random_state=0,
+        )
     model.fit(X, Y)
     results = {}
     results['model'] = model
@@ -62,31 +68,47 @@ def run_evaluation(model, X, Y):
     return results
 
 
-def run_cv(X, Y):
-    models = []
+def run_cv(options, X, Y):
+    logger = get_logger()
+
     metrics = {}
     metrics['acc'] = []
 
-    cross_validation_splitter = StratifiedKFold(n_splits=9)
+    n_splits = 9
+    cross_validation_splitter = StratifiedKFold(n_splits=n_splits)
+    splits = cross_validation_splitter.split(X, Y)
 
-    for i, (train_index, test_index) in enumerate(cross_validation_splitter.split(X, Y)):
+    for i in range(n_splits):
+        logger.info('fold {}'.format(i))
+        train_index, test_index = next(splits)
         trainX, testX = X[train_index], X[test_index]
         trainY, testY = Y[train_index], Y[test_index]
-        train_results = run_train(trainX, trainY)
+
+        # Train
+        logger.info('train')
+        train_results = run_train(options, trainX, trainY)
         model = train_results['model']
+
+        depths = [a.tree_.max_depth for a in model.estimators_]
+        logger.info('depths = {}'.format(depths))
+
+        # Eval
+        logger.info('eval')
         eval_results = run_evaluation(model, testX, testY)
         acc = eval_results['acc']
+
+        logger.info('eval-acc={:.3f}'.format(acc))
 
         train_size = trainX.shape[0]
         test_size = testX.shape[0]
 
         # Record for later.
         metrics['acc'].append(acc)
-        models.append(model)
+
+        del model
 
     results = {}
     results['metrics'] = metrics
-    results['models'] = models
 
     return results
 
@@ -108,6 +130,10 @@ def get_argument_parser():
     parser.add_argument('--cutoff', default=9, type=int)
     # settings
     parser.add_argument('--max_features', default=None, type=int)
+    # rfc
+    parser.add_argument('--n_jobs', default=-1, type=int)
+    parser.add_argument('--n_estimators', default=100, type=int)
+    parser.add_argument('--max_depth', default=None, type=int)
     
     return parser
     
@@ -135,6 +161,10 @@ def parse_args(parser):
 
 
 def run(options):
+    logger = configure_logger()
+
+    logger.info('start')
+
     random.seed(options.seed)
     np.random.seed(options.seed)
     raw_datasets = DatasetReader(options).read()
@@ -142,15 +172,15 @@ def run(options):
     # TODO: Use language as a feature?
     X, Y, languages = DatasetManager(options).build(raw_datasets)
 
-    print('language-counter={}'.format(Counter(languages)))
+    logger.info('language-counter={}'.format(Counter(languages)))
 
-    results = run_cv(X, Y)
+    results = run_cv(options, X, Y)
 
     acc_mean = np.mean(results['metrics']['acc'])
     acc_std = np.std(results['metrics']['acc'])
     acc_max = np.max(results['metrics']['acc'])
 
-    print('acc-mean={:.3f} acc-std={:.3f} acc-max={:.3f}'.format(
+    logger.info('acc-mean={:.3f} acc-std={:.3f} acc-max={:.3f}'.format(
         acc_mean, acc_std, acc_max))
 
 
