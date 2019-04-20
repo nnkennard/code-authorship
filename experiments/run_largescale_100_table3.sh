@@ -1,6 +1,6 @@
 CODE="$HOME/School/amir-security/code-authorship"
 RESULTS="$HOME/School/amir-security/code-authorship/experiments/results"
-RESULTS_PATH="${RESULTS}/largescale_100.txt"
+RESULTS_PATH="${RESULTS}/largescale_100_table3.txt"
 
 cd $CODE
 
@@ -12,7 +12,7 @@ echo begin > $RESULTS_PATH
 for MAXCLASSES in "${MAXCLASSES_LST[@]}"
 do
     python codeauthorship/scripts/train_multilang.py \
-        --path_py ~/Downloads/gcj-py-all.jsonl \
+        --path_py ~/Downloads/gcj-py-table3.jsonl \
         --n_estimators $N_ESTIMATORS \
         --max_classes $MAXCLASSES \
         --max_features 2500 \
