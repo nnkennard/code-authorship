@@ -68,8 +68,7 @@ def get_leaf_node_count(estimator):
 
 def run_train(options, X, Y):
     logger = get_logger()
-    n_classes = len(set(Y))
-    logger.info('n-classes={}'.format(n_classes))
+
     max_leaf_nodes = None
     if options.max_leaf_nodes_scale is not None:
         max_leaf_nodes = n_classes * max_leaf_nodes_scale
@@ -122,6 +121,11 @@ def run_evaluation_topk(model, X, Y, k=10):
 def run_cv(options, X, Y):
     logger = get_logger()
 
+    n_classes = len(set(Y))
+    logger.info('n-classes={}'.format(n_classes))
+
+    metadata = {}
+    metadata['n_classes'] = n_classes
     metrics = {}
     metrics['acc'] = []
     metrics['acck'] = {}
@@ -171,6 +175,7 @@ def run_cv(options, X, Y):
         metrics['acck'][k] = np.mean(v)
     results = {}
     results['metrics'] = metrics
+    results['metadata'] = metadata
 
     return results
 
@@ -256,6 +261,7 @@ def run(options):
     if options.json_result:
         json_result = {}
         json_result['options'] = options.__dict__
+        json_result['metadata'] = results['metadata']
         json_result['metrics'] = {}
         json_result['metrics']['acc_mean'] = acc_mean
         json_result['metrics']['acc_std'] = acc_std
