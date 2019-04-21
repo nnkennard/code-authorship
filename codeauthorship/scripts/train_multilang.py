@@ -97,11 +97,35 @@ def run_evaluation(model, X, Y):
     return results
 
 
+def run_evaluation_topk(model, X, Y, k=10):
+    class2idx = {k: i for i, k in enumerate(model.classes_.tolist())}
+    y_idx = [class2idx[k] for k in Y.tolist()]
+    # Reshape so it is one class per row.
+    y_idx = np.array(y_idx).repeat(k).reshape(-1, k)
+
+    prob = model.predict_proba(X)
+    pred = np.argsort(prob, axis=1)[:, ::-1][:, :k]
+
+    # Compute accuracy at k.
+    acck = {}
+    for kk in range(1, k+1):
+        pred_topk = pred[:, :kk]
+        y_idx_k = y_idx[:, :kk]
+        acck[kk] = np.sum(pred_topk == y_idx_k, axis=1).mean()
+
+    results = {}
+    results['acck'] = acck
+
+    return results
+
+
 def run_cv(options, X, Y):
     logger = get_logger()
 
     metrics = {}
     metrics['acc'] = []
+    metrics['acck'] = {}
+    acck = {}
 
     n_splits = 9
     cross_validation_splitter = StratifiedKFold(n_splits=n_splits)
@@ -128,8 +152,12 @@ def run_cv(options, X, Y):
         logger.info('eval')
         eval_results = run_evaluation(model, testX, testY)
         acc = eval_results['acc']
-
         logger.info('eval-acc={:.3f}'.format(acc))
+
+        eval_results = run_evaluation_topk(model, testX, testY)
+        for k, v in eval_results['acck'].items():
+            logger.info('k={} eval-acc={:.3f}'.format(k, v))
+            acck.setdefault(k, []).append(v)
 
         train_size = trainX.shape[0]
         test_size = testX.shape[0]
@@ -139,6 +167,8 @@ def run_cv(options, X, Y):
 
         del model
 
+    for k, v in acck.items():
+        metrics['acck'][k] = np.mean(v)
     results = {}
     results['metrics'] = metrics
 
@@ -216,9 +246,11 @@ def run(options):
     acc_mean = np.mean(results['metrics']['acc'])
     acc_std = np.std(results['metrics']['acc'])
     acc_max = np.max(results['metrics']['acc'])
-
     logger.info('acc-mean={:.3f} acc-std={:.3f} acc-max={:.3f}'.format(
         acc_mean, acc_std, acc_max))
+
+    for k, v in results['metrics']['acck'].items():
+        logger.info('k={} acc-mean={:.3f}'.format(k, v))
 
     if options.json_result:
         json_result = {}
@@ -227,6 +259,7 @@ def run(options):
         json_result['metrics']['acc_mean'] = acc_mean
         json_result['metrics']['acc_std'] = acc_std
         json_result['metrics']['acc_max'] = acc_max
+        json_result['metrics']['acc_k'] = results['metrics']['acck']
         print(json.dumps(json_result, sort_keys=True))
 
 
