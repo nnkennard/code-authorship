@@ -209,6 +209,7 @@ def run(options):
     X, Y, languages = DatasetManager(options).build(raw_datasets)
 
     logger.info('language-counter={}'.format(Counter(languages)))
+    logger.info('X.shape={} Y.shape={}'.format(X.shape, Y.shape))
 
     results = run_cv(options, X, Y)
 
