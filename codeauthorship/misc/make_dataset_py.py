@@ -33,13 +33,13 @@ def convert_file(path_in, path_out):
     reader = file_getter(path_in)
 
     example_id = 0
-
     failed = 0
     skipped = 0
     success = 0
 
     with open(path_out, 'w') as f:
         for i, row in enumerate(reader):
+            year = row['year']
             username = row['username']
 
             # Only python for now.
@@ -66,11 +66,10 @@ def convert_file(path_in, path_out):
                     tokens.append(token)
 
                 ex = {}
+                ex['year'] = year
                 ex['username'] = username
                 ex['tokens'] = tokens
                 ex['example_id'] = str(example_id)
-
-                # import ipdb; ipdb.set_trace()
 
                 f.write('{}\n'.format(json.dumps(ex)))
                 example_id += 1
@@ -91,12 +90,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_in', default='~/Downloads/gcj2008.csv,~/Downloads/gcj2017.csv', type=str)
     parser.add_argument('--path_out', default='~/Downloads/gcj.jsonl', type=str)
-    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'table3', 'all'))
+    parser.add_argument('--preset', default='none', choices=('small', 'medium', 'table3', 'all', '2014'))
     options = parser.parse_args()
 
     if options.preset == 'small':
         options.path_in = '~/Downloads/gcj2008.csv'
         options.path_out = '~/Downloads/gcj-py-small.jsonl'
+    elif options.preset == '2014':
+        options.path_in = '~/Downloads/gcj2014.csv'
+        options.path_out = '~/Downloads/gcj-py-2014.jsonl'
     elif options.preset == 'medium':
         options.path_in = '~/Downloads/gcj2017.csv'
         options.path_out = '~/Downloads/gcj-py-medium.jsonl'

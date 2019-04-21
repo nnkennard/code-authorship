@@ -42,6 +42,7 @@ def convert_file(path_in, path_out):
 
     with open(path_out, 'w') as f:
         for i, row in enumerate(reader):
+            year = row['year']
             username = row['username']
 
             # Only python for now.
@@ -71,6 +72,7 @@ def convert_file(path_in, path_out):
                     tokens.append(token)
 
                 ex = {}
+                ex['year'] = year
                 ex['username'] = username
                 ex['tokens'] = tokens
                 ex['example_id'] = str(example_id)

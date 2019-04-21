@@ -192,6 +192,7 @@ def get_argument_parser():
     parser.add_argument('--preset_cpp', default='none', choices=('none', 'small', 'medium'))
     parser.add_argument('--seed', default=None, type=int)
     parser.add_argument('--cutoff', default=9, type=int)
+    parser.add_argument('--exact', action='store_true')
     # data
     parser.add_argument('--max_features', default=None, type=int)
     parser.add_argument('--max_classes', default=None, type=int)

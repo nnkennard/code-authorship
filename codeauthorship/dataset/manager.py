@@ -52,8 +52,12 @@ class DatasetManager(object):
         found = 0
         for label in label_lst:
             mask = Y == label
-            if mask.sum() < files_per_author:
-                continue
+            if self.options.exact:
+                if mask.sum() != files_per_author:
+                    continue
+            else:
+                if mask.sum() < files_per_author:
+                    continue
             # TODO: Should we take all of the instances?
             index_to_keep += index[mask].tolist()[:files_per_author]
             found += 1
