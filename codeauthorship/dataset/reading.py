@@ -109,8 +109,8 @@ class Dataset(object):
     def build(self, records):
         logger = get_logger()
 
-        include_type = set(self.options.include_type.split(','))
-        exclude_type = set(self.options.exclude_type.split(','))
+        include_type = set([x for x in self.options.include_type.split(',') if len(x)>0])
+        exclude_type = set([x for x in self.options.exclude_type.split(',') if len(x)>0])
 
         dataset = {}
 
