@@ -32,7 +32,10 @@ class DatasetReader(object):
         def func():
             with open(path) as f:
                 for line in tqdm(f, desc='read', disable=not self.options.show_progress):
-                    yield json.loads(line)
+                    ex = json.loads(line)
+                    if len(ex['tokens']) == 0:
+                        continue
+                    yield ex
         return list(func())
 
     def read(self):
@@ -109,9 +112,10 @@ class Dataset(object):
 
         # Secondary data. len(seq) == len(extra[key])
         extra = {}
-        seq_types = []
         labels = []
         example_ids = []
+        if self.options.extra_type:
+            seq_types = []
 
         # Metadata. Information about the dataset.
         metadata = {}
@@ -119,9 +123,11 @@ class Dataset(object):
         for i, ex in tqdm(enumerate(records), desc='build', disable=not self.options.show_progress):
             tokens = ex['tokens']
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.
-            seq_types.append([x['type'] for x in tokens])
             labels.append(ex['username'])
             example_ids.append(ex['example_id'])
+
+            if self.options.extra_type:
+                seq_types.append([x['type'] for x in tokens])
 
         # Indexify if needed.
         labels, label2idx = self.build_label_vocab(labels)
@@ -129,8 +135,10 @@ class Dataset(object):
         # Record everything.
         extra['example_ids'] = example_ids
         extra['labels'] = labels
-        extra['seq_types'] = seq_types
         extra['lang'] = [self.language] * len(example_ids)
+
+        if self.options.extra_type:
+            extra['seq_types'] = seq_types
 
         metadata['label2idx'] = label2idx
         metadata['language'] = self.language

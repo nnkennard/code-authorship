@@ -201,6 +201,9 @@ def get_argument_parser():
     # data
     parser.add_argument('--max_features', default=None, type=int)
     parser.add_argument('--max_classes', default=None, type=int)
+    parser.add_argument('--extra_type', action='store_true')
+    parser.add_argument('--include_type', default='', type=str)
+    parser.add_argument('--exclude_type', default='', type=str)
     # rfc
     parser.add_argument('--n_jobs', default=-1, type=int)
     parser.add_argument('--n_estimators', default=100, type=int)
@@ -212,6 +215,9 @@ def get_argument_parser():
 
 def parse_args(parser):
     options = parser.parse_args()
+
+    options.include_type = set(options.include_type.split(','))
+    options.exclude_type = set(options.exclude_type.split(','))
 
     if options.preset_py != 'none':
         preset_py = dict(small='~/Downloads/gcj-py-small.jsonl')
