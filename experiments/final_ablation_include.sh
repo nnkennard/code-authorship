@@ -25,7 +25,7 @@ TOKEN_TYPES=(
 'ERRORTOKEN'
 )
 
-DATAPATH=$CADATA/gcj-py-2014.jsonl
+DATAPATH=$CADATA/gcj-py-table3.jsonl
 
 echo begin > $RESULTS_PATH
 
@@ -37,6 +37,6 @@ do
         python codeauthorship/scripts/train_multilang.py \
             --include_type $TT1,$TT2 \
             --path_py $DATAPATH \
-            --n_estimators 300 --max_features 2500 --json_result >> $RESULTS_PATH  2>&1
+            --n_estimators 100 --max_features 2500 --json_result >> $RESULTS_PATH  2>&1
     done
 done
