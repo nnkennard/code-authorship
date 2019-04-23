@@ -109,6 +109,9 @@ class Dataset(object):
     def build(self, records):
         logger = get_logger()
 
+        include_type = set(self.options.include_type.split(','))
+        exclude_type = set(self.options.exclude_type.split(','))
+
         dataset = {}
 
         # Primary data.
@@ -126,10 +129,14 @@ class Dataset(object):
         
         for i, ex in tqdm(enumerate(records), desc='build', disable=not self.options.show_progress):
             tokens = ex['tokens']
-            if len(self.options.exclude_type) > 0:
+            if len(exclude_type) > 0:
                 token_types = [x['type'] for x in tokens]
                 tokens = [tokens[i] for i in range(len(tokens))
-                          if token_types[i] not in self.options.exclude_type]
+                          if token_types[i] not in exclude_type]
+            if len(include_type) > 0:
+                token_types = [x['type'] for x in tokens]
+                tokens = [tokens[i] for i in range(len(tokens))
+                          if token_types[i] in include_type]
 
 
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.

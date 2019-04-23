@@ -216,9 +216,6 @@ def get_argument_parser():
 def parse_args(parser):
     options = parser.parse_args()
 
-    options.include_type = set(options.include_type.split(','))
-    options.exclude_type = set(options.exclude_type.split(','))
-
     if options.preset_py != 'none':
         preset_py = dict(small='~/Downloads/gcj-py-small.jsonl')
         options.path_py = os.path.expanduser(preset_py[options.preset_py])
