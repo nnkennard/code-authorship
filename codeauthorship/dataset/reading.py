@@ -1,8 +1,10 @@
 import json
 
-from collections import deque
+from collections import deque, Counter
 
 from tqdm import tqdm
+
+from codeauthorship.utils.logging import *
 
 
 def indexify(value2idx, lst):
@@ -105,6 +107,8 @@ class Dataset(object):
         self.options = options
 
     def build(self, records):
+        logger = get_logger()
+
         dataset = {}
 
         # Primary data.
@@ -122,6 +126,12 @@ class Dataset(object):
         
         for i, ex in tqdm(enumerate(records), desc='build', disable=not self.options.show_progress):
             tokens = ex['tokens']
+            if len(self.options.exclude_type) > 0:
+                token_types = [x['type'] for x in tokens]
+                tokens = [tokens[i] for i in range(len(tokens))
+                          if token_types[i] not in self.options.exclude_type]
+
+
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.
             labels.append(ex['username'])
             example_ids.append(ex['example_id'])
@@ -139,6 +149,11 @@ class Dataset(object):
 
         if self.options.extra_type:
             extra['seq_types'] = seq_types
+
+            types_set = Counter()
+            for xs in seq_types:
+                types_set.update(xs)
+            logger.info('TYPES: {}'.format(types_set))
 
         metadata['label2idx'] = label2idx
         metadata['language'] = self.language
