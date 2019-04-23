@@ -30,6 +30,20 @@ reserved_words = get_reserved_words()
 
 tFONTSIZE = 6
 
+token_types_counter = Counter({
+    'OP': 7965387,
+    'NAME': 6164504,
+    'NEWLINE': 1950861,
+    'NUMBER': 1554308,
+    'INDENT': 663887,
+    'DEDENT': 663887,
+    'NL': 653403,
+    'STRING': 609236,
+    'COMMENT': 160902,
+    'ENCODING': 57147,
+    'ENDMARKER': 57147,
+    'ERRORTOKEN': 479})
+
 
 def init_rescaling_funcs(fig):
     r = fig.canvas.get_renderer()
@@ -59,6 +73,7 @@ def init_rescaling_funcs(fig):
 
 
 def get_color(tt, separate_NAME=False, reserved=False):
+    textcolor = 'white'
     if tt == 'NAME':
         if separate_NAME:
             if reserved:
@@ -68,18 +83,23 @@ def get_color(tt, separate_NAME=False, reserved=False):
         else:
             color = 'tab:blue'
     elif tt == 'ENCODING':
-        color = 'yellow'
+        color = 'moccasin'
+        textcolor = 'black'
     elif tt == 'OP':
         color = 'green'
-    elif tt in ('INDENT', 'DEDENT', 'COMMENT', 'NEWLINE', 'NL'):
-        color = 'gray'
-    elif tt in ('NUMBER', 'STRING'):
+    elif tt in ('INDENT', 'DEDENT'):
+        color = 'silver'
+    elif tt in ('COMMENT', 'NEWLINE', 'NL'):
+        color = 'slategray'
+    elif tt in ('NUMBER',):
+        color = 'deeppink'
+    elif tt in ('STRING',):
         color = 'purple'
-    elif tt in ('ENDMARKER'):
+    elif tt in ('ENDMARKER',):
         color = 'red'
     else:
         raise Exception('type={}'.format(tt))
-    return color
+    return color, textcolor
 
 
 def run(options):
@@ -218,12 +238,15 @@ def run(options):
                 importance = feature_importance.get(w, 0)
                 ibuf = maximportance / 10
                 alpha = (importance+ibuf) / (maximportance+ibuf)
-                color = get_color(tt, separate_NAME=options.separate_NAME, reserved=w in reserved_words)
+                color, textcolor = get_color(tt, separate_NAME=options.separate_NAME, reserved=w in reserved_words)
 
                 if options.random_type:
                     alpha = 1.
                     if tt != rand_tt:
                         alpha = 0
+
+                if options.ignore_importance:
+                    alpha = 1
 
                 w = w.replace('\t', '  ')
                 for c in w:
@@ -240,15 +263,23 @@ def run(options):
                     # 2. Draw character.
                     t = plt.text(xoffset + char_width/2, yoffset + char_height/2, c,
                                  horizontalalignment='center', verticalalignment='center',
-                                 fontsize=tFONTSIZE,
+                                 fontsize=tFONTSIZE, color=textcolor,
                                  bbox=dict(pad=0, fill=False, linewidth=0))
                     xoffset += char_width
+
+                # 3. Box around token.
+                p = patches.Rectangle((xoffset - len(w) * char_width, yoffset),
+                    len(w) * char_width, char_height, color='black', linewidth=1,
+                    alpha=1, fill=False, clip_on=False)
+                ax.add_patch(p)
             
             yoffset -= char_height
 
         plt.axis('off')
-        plt.savefig('{}/code-{:06}.png'.format(options.imgdir, idx), bbox_inches='tight')
+        filename = '{}/code-{:06}.png'.format(options.imgdir, idx)
+        plt.savefig(filename, bbox_inches='tight', format='png', dpi=700)
         plt.close()
+        print(filename)
         seen += 1
 
         if seen == seen_limit:
@@ -263,13 +294,14 @@ if __name__ == '__main__':
     parser.add_argument('--maxchar', default=None, type=int)
     parser.add_argument('--separate_NAME', action='store_true')
     parser.add_argument('--random_type', action='store_true')
-    parser.add_argument('--imgdir', default='imgs', type=str)
+    parser.add_argument('--ignore_importance', action='store_true')
+    parser.add_argument('--imgdir', default='imgs-final', type=str)
     options = parse_args(parser)
 
     if options.separate_NAME:
-        options.imgdir = 'imgs-separate'
+        options.imgdir = 'imgs-separate-final'
     if options.random_type:
-        options.imgdir = 'imgs-randtype'
+        options.imgdir = 'imgs-randtype-final'
 
     print(json.dumps(options.__dict__, sort_keys=True))
 
