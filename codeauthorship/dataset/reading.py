@@ -2,9 +2,19 @@ import json
 
 from collections import deque, Counter
 
+import keyword
+import builtins
+
 from tqdm import tqdm
 
 from codeauthorship.utils.logging import *
+
+
+def get_reserved_words():
+    reserved_words = []
+    reserved_words += keyword.kwlist
+    reserved_words += dir(builtins)
+    return set(reserved_words)
 
 
 def indexify(value2idx, lst):
@@ -106,11 +116,22 @@ class Dataset(object):
         super(Dataset, self).__init__()
         self.options = options
 
+    def get_author_usage(self, records):
+        author_usage = {}
+        for rec in records:
+            tokens = rec['tokens']
+            label = rec['username']
+
+            for x in tokens:
+                author_usage.setdefault(x['val'], set()).add(label)
+        return author_usage
+
     def build(self, records):
         logger = get_logger()
 
         include_type = set([x for x in self.options.include_type.split(',') if len(x)>0])
         exclude_type = set([x for x in self.options.exclude_type.split(',') if len(x)>0])
+        reserved_words = get_reserved_words()
 
         dataset = {}
 
@@ -126,6 +147,9 @@ class Dataset(object):
 
         # Metadata. Information about the dataset.
         metadata = {}
+
+        if self.options.author_usage is not None:
+            author_usage = self.get_author_usage(records)
         
         for i, ex in tqdm(enumerate(records), desc='build', disable=not self.options.show_progress):
             tokens = ex['tokens']
@@ -133,11 +157,18 @@ class Dataset(object):
                 token_types = [x['type'] for x in tokens]
                 tokens = [tokens[i] for i in range(len(tokens))
                           if token_types[i] not in exclude_type]
+
             if len(include_type) > 0:
                 token_types = [x['type'] for x in tokens]
                 tokens = [tokens[i] for i in range(len(tokens))
                           if token_types[i] in include_type]
 
+            if self.options.reserved:
+                tokens = [x for x in tokens if x['val'] in reserved_words]
+            if self.options.notreserved:
+                tokens = [x for x in tokens if x['val'] not in reserved_words]
+            if self.options.author_usage is not None:
+                tokens = [x for x in tokens if len(author_usage[x['val']]) >= self.options.author_usage]
 
             seq.append([x['val'].lower() for x in tokens]) # NOTE: Case is ignored.
             labels.append(ex['username'])

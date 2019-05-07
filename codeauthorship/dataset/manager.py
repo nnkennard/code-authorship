@@ -1,5 +1,7 @@
 import random
 
+from collections import Counter
+
 import numpy as np
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -47,7 +49,9 @@ class DatasetManager(object):
         ## First record 9 instances from each class (ignore classes with less than 9 instances).
         index = np.arange(N)
         index_to_keep = []
+        language_distribution_lst = []
         label_lst = list(set(all_labels))
+        random.shuffle(label_lst)
 
         found = 0
         for label in label_lst:
@@ -58,16 +62,30 @@ class DatasetManager(object):
             else:
                 if mask.sum() < files_per_author:
                     continue
+            if self.options.multilang:
+                subindex = index[mask].tolist()
+                sublanguages = [all_languages[idx] for idx in subindex]
+                if len(set(sublanguages)) == 1:
+                    continue
             # TODO: Should we take all of the instances?
-            index_to_keep += index[mask].tolist()[:files_per_author]
+            subindex = index[mask].tolist()[:files_per_author]
+            index_to_keep += subindex
             found += 1
+
+            sublanguages = [all_languages[idx] for idx in subindex]
+            language_distribution_lst.append(tuple(set(sublanguages)))
 
         ## Optionally, downsample eligible classes.
         assert len(index_to_keep) == files_per_author * found
         logger.info('found {} eligible classes'.format(found))
         if self.options.max_classes is not None:
             index_to_keep = index_to_keep[:self.options.max_classes*files_per_author]
+            language_distribution_lst = language_distribution_lst[:self.options.max_classes]
             logger.info('downsampled to {} classes'.format(len(index_to_keep) // files_per_author))
+
+        language_distribution = Counter(language_distribution_lst)
+
+        logger.info('language-distribution={}'.format(language_distribution))
 
         index_to_keep = np.array(index_to_keep)
 
